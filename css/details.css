@@ -1,0 +1,69 @@
+      /* Custom Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 1rem;
+        }
+        
+        .gallery-main {
+            grid-row: 1 / span 2;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .gallery-main {
+                grid-row: auto;
+                height: 300px;
+            }
+        }
+
+        /* Calendar Styles for Widget */
+        .calendar-day {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .calendar-day:hover {
+            background-color: #f3f4f6;
+        }
+        .calendar-day.selected {
+            background-color: #003940;
+            color: white;
+        }
+        .calendar-day.in-range {
+            background-color: #ecfdf5;
+            color: #003940;
+        }
+        
+        /* Modal Scrollbar */
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #1a1a1a; 
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
+        /* Animation for new reviews */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailored Egypt Tours</title>
+    
+    <!-- Fonts: Montserrat for body, Great Vibes for the script text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration for Primary Color -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003940',
+                        'primary-dark': '#002a30',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+      <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body class="bg-emerald-50/50">
+
+    <!-- Navbar -->
+    <nav class="absolute top-0 left-0 w-full z-50 text-white py-6 px-4 md:px-12 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <!-- Icon Placeholder mimicking the pyramid/camel logo -->
+            <div class="w-12 h-12 relative">
+                <img src="https://cdn-icons-png.flaticon.com/512/262/262590.png" class="invert opacity-90 w-full h-full object-contain" alt="Logo Icon">
+            </div>
+            <div class="leading-tight">
+                <h1 class="font-serif text-xl tracking-widest font-bold">TAILORED</h1>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-gray-300">Egypt Tours</p>
+            </div>
+        </div>
+
+        <!-- Right Side Nav Items -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition">
+                <i class="fa-solid fa-globe"></i> Language
+            </a>
+            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition">
+                <i class="fa-regular fa-heart"></i> Favorite
+            </a>
+            <a href="#" class="hover:text-emerald-200 transition">Sign up</a>
+            <button class="bg-white text-primary px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition">
+                Log in
+            </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-2xl text-white">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section flex flex-col justify-center items-center relative">
+        <!-- Welcome Text -->
+        <div class="text-center z-10 select-none pointer-events-none transform -translate-y-12">
+            <!-- Staggered Layout for Script Text -->
+            <div class="text-white font-script text-6xl md:text-8xl lg:text-9xl relative w-full max-w-4xl mx-auto h-64">
+                <span class="absolute top-0 left-4 md:left-20 transform -rotate-6">Welcome</span>
+                <span class="absolute top-24 left-1/2 transform -translate-x-1/2 text-5xl md:text-7xl">To</span>
+                <span class="absolute bottom-0 right-4 md:right-20 transform rotate-3">Egypt</span>
+            </div>
+        </div>
+
+        <!-- Search Box (Floating) -->
+        <div class="absolute bottom-24 md:bottom-28 w-[90%] md:w-[700px] z-20">
+            <div class="bg-white rounded-3xl shadow-2xl p-2 md:p-3 flex flex-col md:flex-row items-center gap-2">
+                
+                <!-- Input 1: Destination -->
+                <div class="flex-1 flex items-center gap-4 px-4 py-3 w-full border-b md:border-b-0 md:border-r border-gray-100">
+                    <div class="text-yellow-600 text-2xl">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <div>
+                        <label class="block text-primary font-bold text-lg leading-none">Where</label>
+                        <input type="text" placeholder="Search destinations ?" class="text-xs text-gray-500 w-full outline-none placeholder-gray-400 font-medium">
+                    </div>
+                </div>
+
+                <!-- Input 2: Tour Type -->
+                <div class="flex-1 flex items-center gap-4 px-4 py-3 w-full">
+                    <div class="text-yellow-600 text-2xl">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                    </div>
+                    <div>
+                        <label class="block text-primary font-bold text-lg leading-none">Tour Type</label>
+                        <select class="text-xs text-gray-500 w-full outline-none bg-transparent font-medium cursor-pointer">
+                            <option>All Tours</option>
+                            <option>Adventure</option>
+                            <option>Historical</option>
+                            <option>Relaxation</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button class="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-2xl font-bold text-lg transition w-full md:w-auto shadow-lg">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Wave Divider -->
+        <div class="custom-shape-divider-bottom">
+            <svg width="1440" height="107" viewBox="0 0 1440 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_7_672" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-36" y="0" width="1519" height="105">
+                <path d="M1483 0.339294H-36V104.73H1483V0.339294Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask0_7_672)">
+                <mask id="mask1_7_672" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-36" y="0" width="1519" height="105">
+                <path d="M1483 0.339294H-36V104.73H1483V0.339294Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask1_7_672)">
+                <mask id="mask2_7_672" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-36" y="0" width="1519" height="105">
+                <path d="M1483 0.339294H-36V104.73H1483V0.339294Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask2_7_672)">
+                <path d="M-36 68.6241C-36 68.6241 3.11349 52.1348 39.0124 50.9845C75.4465 49.8341 106.524 50.9845 150.995 56.7366C211.54 64.4059 328.346 95.4672 390.499 78.5944C452.652 61.7215 455.331 60.9548 486.944 50.2175C522.306 37.9464 594.104 13.4041 683.047 14.5546C777.884 15.705 949.873 78.211 1020.6 75.1432C1028.1 74.7596 1055.97 72.0755 1076.86 67.4737C1097.22 62.8722 1127.22 52.9019 1167.95 49.4505C1185.09 47.9167 1212.42 45.2323 1244.04 45.9993C1252.07 46.3827 1277.79 47.5331 1308.33 52.1349C1338.87 56.7366 1367.27 64.0226 1392.98 66.3233C1448.17 70.5415 1483 64.4059 1483 64.4059V105.821H-36V68.6241ZM85.6272 62.4885C89.3783 66.3233 96.3429 64.0226 108.667 64.0226C120.99 64.0226 141.351 68.6241 139.743 68.2407C138.136 67.8573 123.133 62.4885 107.595 60.9548C91.5209 59.0374 82.4128 58.6538 85.6272 62.4885ZM184.214 72.8422C184.214 72.8422 197.074 73.6092 214.22 76.2936C231.365 79.3614 269.408 87.0309 295.126 89.7151C339.061 93.9332 379.782 89.7151 376.032 89.3317C371.746 88.9481 324.595 91.6325 281.731 85.1136C264.05 82.4292 231.901 76.677 215.292 74.7596C197.61 72.4589 184.214 72.8422 184.214 72.8422ZM490.694 73.2259C481.585 75.9103 561.955 55.2026 589.817 49.8341C601.069 47.5331 623.037 43.6986 643.397 42.1645C664.294 40.6308 691.084 40.6308 690.548 40.2472C690.548 39.4801 659.472 37.1794 630.538 40.2472C601.605 43.3149 602.676 44.4653 589.817 46.3827C569.456 49.4505 499.803 70.5415 490.694 73.2259ZM416.217 79.3614C415.146 79.3614 420.503 80.8951 441.936 75.1432C463.368 69.3911 477.835 61.7215 478.906 60.9548C479.978 60.5712 460.154 67.8573 443.543 72.4589C427.469 77.0606 416.753 79.3614 416.217 79.3614ZM-33.321 82.8125C-32.7852 82.4292 -23.1408 78.5944 -7.60263 73.2259C7.93572 67.8573 29.3679 62.4885 28.2962 62.8722C27.2247 62.8722 9.54325 65.1729 -11.353 72.4589C-32.2494 79.7448 -33.8568 83.1962 -33.321 82.8125ZM1315.29 61.3382C1314.75 62.1052 1325.47 62.1052 1339.4 65.9399C1353.34 69.7745 1368.34 72.0755 1381.2 73.6092C1402.63 76.677 1443.89 73.2259 1441.74 72.8422C1440.14 72.4589 1397.81 73.9929 1374.77 70.1581C1362.98 68.2407 1361.91 68.2407 1344.23 64.0226C1326.54 59.8044 1315.83 60.1878 1315.29 61.3382ZM1091.87 70.5415C1089.72 70.9251 1073.11 76.677 1046.85 80.5118C1020.6 84.7299 999.173 82.4292 999.173 83.5795C999.173 84.7299 1004.53 87.0309 1032.39 84.7299C1060.25 82.4292 1094.01 70.1581 1091.87 70.5415ZM1099.37 80.1284C1098.3 79.7448 1081.15 85.1136 1068.83 86.6473C1056.5 87.7977 1058.64 88.5647 1058.64 88.9481C1058.64 89.3317 1064.54 89.7151 1073.11 88.1813C1082.22 86.2639 1100.44 80.5118 1099.37 80.1284ZM981.485 88.9481C980.954 88.1813 962.734 85.8803 951.485 82.0458C940.236 78.211 941.839 79.7448 941.308 80.1284C940.768 80.5118 945.586 83.1962 954.16 85.1136C962.734 87.4143 982.025 89.7151 981.485 88.9481ZM1132.58 63.2555C1133.12 62.1052 1130.98 61.3382 1122.41 64.0226C1113.83 66.7067 1108.47 69.0077 1110.62 68.6241C1112.76 68.2407 1115.44 67.0903 1124.01 65.5563C1133.12 64.0226 1132.05 64.4059 1132.58 63.2555ZM1298.15 58.2704C1299.22 58.2704 1286.9 55.2026 1280.47 54.8192C1274.04 54.4356 1269.75 54.4356 1269.75 55.586C1269.75 56.7366 1270.29 57.5034 1278.32 57.12C1286.9 56.7366 1297.07 58.2704 1298.15 58.2704ZM667.509 24.9083C668.045 24.5248 680.368 26.0587 707.694 26.0587C734.484 26.0587 780.563 35.262 799.852 39.4801C819.138 43.6986 746.271 24.5248 711.444 23.7579C676.617 22.9909 666.973 25.2918 667.509 24.9083Z" fill="#F2F2F2"/>
+                <path d="M38.4762 36.796C39.0121 37.1794 63.1232 35.6454 77.0541 36.796C116.168 39.4801 168.141 49.0671 165.997 47.9167C163.854 46.766 92.5926 36.029 74.9115 35.262C48.6564 33.728 37.9404 36.796 38.4762 36.796Z" fill="#F2F2F2"/>
+                <path d="M264.585 68.2407C265.657 68.624 288.696 72.0752 315.486 72.8422C342.277 73.6092 383.533 70.5414 381.39 70.9248C379.782 71.3084 349.778 77.8273 310.129 75.5266C270.479 73.2258 263.514 67.857 264.585 68.2407Z" fill="#F2F2F2"/>
+                <path d="M387.284 54.4356C387.82 54.8192 376.568 58.2704 370.138 58.654C363.709 59.0374 359.422 58.654 359.422 57.5034C359.422 56.353 359.958 55.5862 367.995 55.9696C377.104 56.353 386.748 54.0522 387.284 54.4356Z" fill="#F2F2F2"/>
+                <path d="M406.037 65.1729C406.037 65.5563 429.612 60.5711 439.793 56.7363C449.973 53.2852 473.013 44.8489 472.477 44.8489C471.941 44.4653 449.973 50.9844 438.721 54.8192C427.469 58.6537 406.037 64.7893 406.037 65.1729Z" fill="#F2F2F2"/>
+                <path d="M655.185 3.43385C655.72 3.81733 679.832 2.28345 693.763 3.43385C732.876 6.11817 784.849 15.705 782.706 14.5545C780.563 13.4041 709.302 2.66693 691.62 1.89998C665.365 0.366087 654.65 3.05038 655.185 3.43385Z" fill="#F2F2F2"/>
+                <path d="M1258.5 31.8108C1258.5 31.8108 1252.07 32.9612 1242.96 32.1942C1233.85 31.4272 1211.88 28.7428 1199.02 29.5098C1176.52 31.0438 1159.38 39.8637 1161.52 39.4801C1163.66 39.4801 1184.56 31.0438 1207.6 32.1942C1217.24 32.5775 1234.92 34.1116 1243.5 33.7279C1252.07 33.3446 1258.5 31.8108 1258.5 31.8108Z" fill="#F2F2F2"/>
+                <path d="M1078.47 57.5034C1077.4 57.12 1067.76 60.5711 1055.43 61.7215C1043.11 62.4885 1044.18 62.8719 1044.18 63.6389C1044.18 64.0225 1053.82 65.1729 1062.4 63.6389C1070.97 61.7215 1079.54 57.887 1078.47 57.5034Z" fill="#F2F2F2"/>
+                <path d="M1399.41 55.2026C1399.41 55.586 1376.37 55.2026 1363.51 53.2852C1350.65 51.3678 1336.73 45.9993 1336.73 45.6159C1336.73 45.2323 1351.19 48.6837 1364.05 50.9845C1376.37 53.2852 1398.88 54.8192 1399.41 55.2026Z" fill="#F2F2F2"/>
+                </g>
+                </g>
+                </g>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Top Deals Section (Section 1) -->
+    <section class="py-16 px-4 md:px-12 bg-emerald-50/50">
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-primary text-3xl md:text-4xl font-bold">Top Deals Worldwide</h2>
+            <a href="#" class="text-gray-500 text-sm font-semibold hover:text-primary transition">See All Travel</a>
+        </div>
+
+        <!-- Horizontal Scroll Container with Slider Controls -->
+        <div class="relative group">
+            <!-- Left Arrow -->
+            <button id="deals-prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-20 bg-white/90 text-primary w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-50">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div id="deals-scroll-container" class="overflow-x-auto hide-scrollbar pb-10 scroll-smooth snap-x snap-mandatory">
+                <div class="flex gap-6 w-max">
+                    <!-- Card 1: Alex -->
+                    <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=2000&auto=format&fit=crop" alt="Alexandria" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Alex</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Card 2: Luxor -->
+                    <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1562985396-857c0a6b4a6d?q=80&w=2000&auto=format&fit=crop" alt="Luxor" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Luxor</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Cairo -->
+                     <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?q=80&w=2000&auto=format&fit=crop" alt="Cairo" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Cairo</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 4: Giza -->
+                    <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1599940824399-b87987ced72a?q=80&w=2000&auto=format&fit=crop" alt="Giza" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Giza</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 5: Aswan -->
+                    <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1544211110-3844f24d777e?q=80&w=2000&auto=format&fit=crop" alt="Aswan" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Aswan</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 6: Sinai -->
+                    <a href="#" class="card-container snap-center relative group/card cursor-pointer block">
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-lg relative">
+                            <img src="https://images.unsplash.com/photo-1545624765-68d71249b672?q=80&w=2000&auto=format&fit=crop" alt="Sinai" class="w-full h-full object-cover transition duration-500 group-hover/card:scale-110">
+                            <div class="absolute inset-0 bg-black/10 group-hover/card:bg-black/20 transition"></div>
+                        </div>
+                        <div class="discount-badge absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg border-4 border-white z-10 group-hover/card:scale-110 group-hover/card:bg-yellow-500 transition-all duration-300">
+                            <span class="text-[10px] opacity-80 uppercase leading-none mt-1">Upto</span>
+                            <span class="text-xl font-bold leading-none">39%</span>
+                            <span class="text-[10px] leading-none">OFF</span>
+                        </div>
+                        <div class="text-center mt-12 bg-white rounded-xl shadow-sm p-4 w-[90%] mx-auto -mt-10 relative z-0 group-hover/card:shadow-md transition-all">
+                            <h3 class="text-primary font-bold text-lg">Sinai</h3>
+                            <p class="text-xs text-gray-500">100+ Tours</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button id="deals-next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-20 bg-white/90 text-primary w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="relative bg-primary text-white py-24">
+        <!-- Top Brush Stroke Divider -->
+        <div class="brush-divider brush-top">
+             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200,0H0V120H281.94C572.9,116.24,602.45,3.86,602.45,3.86h0S632,116.24,923,120h277Z" class="shape-fill" fill="#ecfdf5" opacity="1"></path>
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill" fill="#ffffff"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill" fill="#ffffff"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill" fill="#ecfdf5"></path>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 md:px-12 relative z-10">
+            <!-- Header -->
+            <div class="flex items-center gap-3 mb-10 border-b border-teal-800 pb-4">
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                <h2 class="text-2xl md:text-3xl font-bold">Why Choose Egypt Joy Travel</h2>
+            </div>
+
+            <!-- Grid Content -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-y-16 text-center">
+                
+                <!-- Feature 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Premium Service, Every Step</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">We go beyond standard tours offering you exceptional experiences with unmatched attention to detail</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Always by Your Side</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">Our expert travel team is available 24/7 to assist you — before, during, and after your trip</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Best Value Guarantee</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">Enjoy exclusive deals on excursions & holiday packages, ensuring you get the best quality at the best price.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Stress-Free Planning</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">From flights to meals, we handle everything so you can focus on creating memories, not logistics.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Handpicked Hotels & Stays</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">Stay only at trusted hotels with excellent reviews, chosen for comfort, location, and service.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="flex flex-col items-center">
+                    <div class="text-4xl mb-4 border-2 border-white/20 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Recognized Excellence</h3>
+                    <p class="text-sm text-teal-100 font-light px-4">Thousands of happy travelers recommend us for our professionalism, dedication, and personal touch.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Brush Stroke Divider -->
+        <div class="brush-divider brush-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200,0H0V120H281.94C572.9,116.24,602.45,3.86,602.45,3.86h0S632,116.24,923,120h277Z" class="shape-fill" fill="#f8fafc" opacity="1"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill" fill="#f8fafc"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Popular Tours Section (Section 2) -->
+    <section class="py-16 px-4 md:px-12 bg-slate-50 min-h-[80vh]">
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-primary text-3xl md:text-4xl font-bold">Find Popular Tours</h2>
+            <a href="#" class="text-gray-500 text-sm font-semibold hover:text-primary transition">See all</a>
+        </div>
+
+         <div class="relative group">
+            <!-- Left Arrow -->
+            <button id="tours-prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 text-primary text-3xl opacity-50 hover:opacity-100 bg-white/50 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center transition-all">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+            </button>
+
+             <!-- Scroll Container -->
+            <div id="tours-scroll-container" class="overflow-x-auto hide-scrollbar pb-10 px-2 scroll-smooth snap-x snap-mandatory">
+                <div class="flex gap-6 w-max">
+                     <!-- Tour Card 1 -->
+                    <a href="#" class="w-80 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 snap-center block">
+                        <div class="h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1544333323-ec13d3d752f9?q=80&w=2000&auto=format&fit=crop" alt="Valley of Kings" class="w-full h-full object-cover">
+                            <!-- Note: Interactive element inside <a> is generally invalid but often works. Better to use positioning or JS for the like button if it must be separate action. -->
+                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-1 text-gray-400 text-xs mb-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Luxor, Egypt</span>
+                            </div>
+                            <h3 class="text-primary font-bold text-lg leading-tight mb-2 line-clamp-2 h-14">
+                                Valley of the kings & Hateshpsut temple Half day tour
+                            </h3>
+                            <p class="text-[10px] text-gray-500 line-clamp-3 mb-3">
+                                The Phi Phi archipelago is a must-visit while in Phuket, and this speedboat trip...
+                            </p>
+                            <div class="flex items-center gap-1 text-yellow-500 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span class="text-gray-400 ml-1">4.8 (243)</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-gray-100 pt-3">
+                                <div class="text-gray-500 text-xs font-medium">
+                                    <i class="fa-regular fa-clock mr-1"></i> 1 day
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-gray-400">From</span>
+                                    <span class="text-primary font-bold text-lg">$80.78</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                     <!-- Tour Card 2 -->
+                    <a href="#" class="w-80 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 snap-center block">
+                        <div class="h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1539650116455-8efdb4f8d548?q=80&w=2000&auto=format&fit=crop" alt="Pyramids" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-1 text-gray-400 text-xs mb-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Giza, Egypt</span>
+                            </div>
+                            <h3 class="text-primary font-bold text-lg leading-tight mb-2 line-clamp-2 h-14">
+                                Great Pyramids of Giza & Sphinx Private Tour
+                            </h3>
+                            <p class="text-[10px] text-gray-500 line-clamp-3 mb-3">
+                                Explore the ancient wonders of Giza with a private guide and comfortable transport...
+                            </p>
+                            <div class="flex items-center gap-1 text-yellow-500 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span class="text-gray-400 ml-1">5.0 (500)</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-gray-100 pt-3">
+                                <div class="text-gray-500 text-xs font-medium">
+                                    <i class="fa-regular fa-clock mr-1"></i> 5 hours
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-gray-400">From</span>
+                                    <span class="text-primary font-bold text-lg">$45.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                     <!-- Tour Card 3 -->
+                    <a href="#" class="w-80 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 snap-center block">
+                        <div class="h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1544211110-3844f24d777e?q=80&w=2000&auto=format&fit=crop" alt="Nile Cruise" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-1 text-gray-400 text-xs mb-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Aswan, Egypt</span>
+                            </div>
+                            <h3 class="text-primary font-bold text-lg leading-tight mb-2 line-clamp-2 h-14">
+                                Luxury Nile Cruise: Aswan to Luxor 4 Days
+                            </h3>
+                            <p class="text-[10px] text-gray-500 line-clamp-3 mb-3">
+                                Sail the Nile in style, visiting Kom Ombo, Edfu, and Luxor temples along the way...
+                            </p>
+                            <div class="flex items-center gap-1 text-yellow-500 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="text-gray-400 ml-1">4.2 (120)</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-gray-100 pt-3">
+                                <div class="text-gray-500 text-xs font-medium">
+                                    <i class="fa-regular fa-clock mr-1"></i> 4 days
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-gray-400">From</span>
+                                    <span class="text-primary font-bold text-lg">$350.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                     <!-- Tour Card 4 -->
+                     <a href="#" class="w-80 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 snap-center block">
+                        <div class="h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1545624765-68d71249b672?q=80&w=2000&auto=format&fit=crop" alt="Sinai" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-1 text-gray-400 text-xs mb-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Sinai, Egypt</span>
+                            </div>
+                            <h3 class="text-primary font-bold text-lg leading-tight mb-2 line-clamp-2 h-14">
+                                Mount Sinai Sunrise Hike & St. Catherine
+                            </h3>
+                            <p class="text-[10px] text-gray-500 line-clamp-3 mb-3">
+                                Experience a spiritual sunrise atop Mount Sinai followed by a visit to the historic monastery...
+                            </p>
+                            <div class="flex items-center gap-1 text-yellow-500 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span class="text-gray-400 ml-1">4.7 (89)</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-gray-100 pt-3">
+                                <div class="text-gray-500 text-xs font-medium">
+                                    <i class="fa-regular fa-clock mr-1"></i> 1 day
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-gray-400">From</span>
+                                    <span class="text-primary font-bold text-lg">$120.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+             <!-- Right Arrow -->
+            <button id="tours-next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 text-primary text-3xl opacity-50 hover:opacity-100 bg-white/50 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center transition-all">
+                <i class="fa-solid fa-circle-chevron-right"></i>
+            </button>
+            
+            <!-- Pagination (Dynamic Dots) -->
+            <div id="popular-tours-dots" class="flex justify-center gap-2 mt-4">
+                <!-- Dots injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section (New Section Part 1) -->
+    <!-- ... existing content ... -->
+    <!-- Top Brush Divider -->
+    <div class="relative w-full overflow-hidden leading-none z-10 -mb-2">
+        <svg fill="#003940" width="100%" height="40px" viewBox="0 0 1200 120" preserveAspectRatio="none" transform="rotate(180)">
+             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
+    
+    <section class="relative bg-primary py-12 md:py-24 overflow-hidden">
+        <!-- Topo Pattern Background -->
+        <div class="absolute inset-0 topo-pattern opacity-30 pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-white space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                        Grab up to <span class="text-yellow-400">35% off</span><br>
+                        on your favorite<br>
+                        Destination
+                    </h2>
+                    <p class="text-emerald-100/80 font-light text-sm max-w-md">
+                        Limited time offer, don't miss the opportunity to explore Egypt's wonders at an unbeatable price.
+                    </p>
+                    <button class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg mt-4">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Images Collage -->
+                <div class="grid grid-cols-2 gap-4 h-[400px]">
+                    <!-- Large Image (Top spans 2 cols) -->
+                    <div class="col-span-2 h-[220px] rounded-2xl overflow-hidden shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" alt="Beach" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <!-- Small Image 1 -->
+                    <div class="h-[160px] rounded-2xl overflow-hidden shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1974&auto=format&fit=crop" alt="Hotel Interior" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <!-- Small Image 2 -->
+                    <div class="h-[160px] rounded-2xl overflow-hidden shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2067&auto=format&fit=crop" alt="Hiking" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bottom Brush Divider -->
+    <div class="relative w-full overflow-hidden leading-none z-10 -mt-2">
+        <svg fill="#003940" width="100%" height="40px" viewBox="0 0 1200 120" preserveAspectRatio="none">
+             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
+
+    <!-- Popular Things To Do Section (New Section Part 2) -->
+    <section class="py-20 px-4 md:px-12 bg-white">
+        <!-- ... existing content ... -->
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-primary text-3xl md:text-4xl font-bold">Popular things to do</h2>
+            <a href="#" class="text-gray-500 text-sm font-semibold hover:text-primary transition">See all</a>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[500px]">
+            <!-- Column 1 -->
+            <div class="flex flex-col gap-4 h-full">
+                <!-- Cruises -->
+                <a href="#" class="relative h-[240px] md:h-1/2 rounded-2xl overflow-hidden group cursor-pointer block">
+                    <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2000&auto=format&fit=crop" alt="Cruises" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium">Cruises</span>
+                </a>
+                <!-- Museum Tour -->
+                <a href="#" class="relative h-[240px] md:h-1/2 rounded-2xl overflow-hidden group cursor-pointer block">
+                    <img src="https://images.unsplash.com/photo-1499856871940-a09627c6dcf6?q=80&w=2000&auto=format&fit=crop" alt="Museum Tour" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium">Museum Tour</span>
+                </a>
+            </div>
+
+            <!-- Column 2 (Tall Item) -->
+            <a href="#" class="relative h-[400px] md:h-full rounded-2xl overflow-hidden group cursor-pointer block">
+                <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=1974&auto=format&fit=crop" alt="Beach Tours" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-6 left-6 text-white text-xl font-medium">Beach Tours</span>
+            </a>
+
+            <!-- Column 3 -->
+            <div class="flex flex-col gap-4 h-full">
+                <!-- City Tours -->
+                <a href="#" class="relative h-[240px] md:h-1/2 rounded-2xl overflow-hidden group cursor-pointer block">
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2000&auto=format&fit=crop" alt="City Tours" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium">City Tours</span>
+                </a>
+                
+                <!-- Split Row -->
+                <div class="flex gap-4 h-[240px] md:h-1/2">
+                    <!-- Small Card 1 -->
+                    <a href="#" class="relative w-1/2 rounded-2xl overflow-hidden group cursor-pointer block">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1974&auto=format&fit=crop" alt="Tours" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <span class="absolute bottom-4 left-4 text-white font-medium">Tours</span>
+                    </a>
+                    <!-- Small Card 2 -->
+                    <a href="#" class="relative w-1/2 rounded-2xl overflow-hidden group cursor-pointer block">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2067&auto=format&fit=crop" alt="Hiking" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <span class="absolute bottom-4 left-4 text-white font-medium">Hiking</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section (Interactive Slider) -->
+    <!-- ... existing content ... -->
+    <section class="py-20 px-4 md:px-12 bg-gray-50/50">
+        <!-- ... existing content ... -->
+        <h2 class="text-primary text-3xl md:text-4xl font-bold text-center mb-16">Customer Reviews</h2>
+        
+        <div class="relative w-full max-w-4xl mx-auto h-[500px]">
+            
+            <!-- Central Testimonial Text (Static container, content updates) -->
+            <div class="absolute top-[50%] left-1/2 -translate-x-1/2 text-center z-40 max-w-lg px-4 w-full">
+                <div id="review-text-container" class="review-text-content opacity-100 transform translate-y-0">
+                    <h4 id="review-title" class="text-yellow-500 font-bold text-sm uppercase tracking-wide mb-2">Excellent Service!</h4>
+                    <p id="review-quote" class="text-primary font-medium text-lg italic mb-6">
+                        "I had an amazing experience with this company. The service was top-notch, and the staff was incredibly friendly. I highly recommend them!"
+                    </p>
+                    <div>
+                        <h5 id="review-name" class="text-primary font-bold">John Smith</h5>
+                        <span id="review-role" class="text-xs text-gray-500 uppercase tracking-widest">Traveler</span>
+                    </div>
+                </div>
+                
+                <!-- Pagination Dots -->
+                <div class="flex justify-center gap-2 mt-8" id="review-dots">
+                    <!-- Dots injected by JS -->
+                </div>
+            </div>
+
+            <!-- Rotating Images Container -->
+            <div id="reviews-orbit-container" class="w-full h-full relative">
+                <!-- Images injected by JS -->
+            </div>
+
+            <!-- Navigation Controls (Optional but good for UX) -->
+            <button id="prev-review" class="absolute left-0 top-1/2 -translate-y-1/2 z-50 text-gray-300 hover:text-primary text-3xl transition p-4">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="next-review" class="absolute right-0 top-1/2 -translate-y-1/2 z-50 text-gray-300 hover:text-primary text-3xl transition p-4">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- Travel Articles Section (New Section Part 4) -->
+    <section class="py-16 px-4 md:px-12 bg-white mb-12">
+        <!-- ... existing content ... -->
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-primary text-3xl md:text-4xl font-bold">Travel Articles</h2>
+            <a href="#" class="text-gray-500 text-sm font-semibold hover:text-primary transition">See all</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Article Card 1 -->
+            <a href="#" class="group cursor-pointer block">
+                <div class="relative h-64 rounded-2xl overflow-hidden mb-4">
+                    <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <span class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-gray-700">Trips</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-500 mb-2">
+                    <span>April 06 2023</span>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                    <span>By Ali Tufan</span>
+                </div>
+                <h3 class="text-primary font-bold text-lg group-hover:text-teal-600 transition">
+                    Kenya vs Tanzania Safari: The Better African Safari Experience
+                </h3>
+            </a>
+
+            <!-- Article Card 2 -->
+            <a href="#" class="group cursor-pointer block">
+                <div class="relative h-64 rounded-2xl overflow-hidden mb-4">
+                    <img src="https://images.unsplash.com/photo-1504280506541-aca142210171?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <span class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-gray-700">Trips</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-500 mb-2">
+                    <span>April 07 2023</span>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                    <span>By Emily Johnson</span>
+                </div>
+                <h3 class="text-primary font-bold text-lg group-hover:text-teal-600 transition">
+                    Exploring the Serengeti: A Wildlife Adventure
+                </h3>
+            </a>
+
+            <!-- Article Card 3 -->
+            <a href="#" class="group cursor-pointer block">
+                <div class="relative h-64 rounded-2xl overflow-hidden mb-4">
+                    <img src="https://images.unsplash.com/photo-1596423190987-a249339a7cc9?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <span class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-gray-700">Trips</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-500 mb-2">
+                    <span>April 08 2023</span>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                    <span>By Maxwell Rhodes</span>
+                </div>
+                <h3 class="text-primary font-bold text-lg group-hover:text-teal-600 transition">
+                    Into the Wild: An Unforgettable Safari Journey
+                </h3>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer Section (Fifth Section & Footer) -->
+    <footer class="relative bg-[#FDFBF6] pt-24 pb-10 mt-12 text-primary overflow-hidden">
+        <!-- Footer Background Map (Replaces Wave Divider) -->
+        <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+            <svg class="w-full h-full object-cover opacity-50" viewBox="0 0 1440 656" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_745)">
+                <path opacity="0.05" d="M1674.84 0H-180.84C-187.764 0 -193.378 5.61362 -193.378 12.5384V642.592C-193.378 649.516 -187.764 655.13 -180.84 655.13H1674.84C1681.76 655.13 1687.38 649.516 1687.38 642.592V12.5384C1687.38 5.61362 1681.76 0 1674.84 0Z" fill="#D9A441"/>
+                <mask id="mask0_7_745" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-194" y="0" width="1882" height="656">
+                <path d="M1674.84 0H-180.84C-187.764 0 -193.378 5.61362 -193.378 12.5384V642.592C-193.378 649.516 -187.764 655.13 -180.84 655.13H1674.84C1681.76 655.13 1687.38 649.516 1687.38 642.592V12.5384C1687.38 5.61362 1681.76 0 1674.84 0Z" fill="#F5F5F5"/>
+                </mask>
+                <g mask="url(#mask0_7_745)">
+                <path d="M-193.378 13.8475C-193.378 13.8475 -144.949 20.4493 -100.501 20.9099C-55.39 21.3705 -16.9118 20.9099 38.1505 18.607C113.115 15.5363 257.738 3.10039 334.693 9.85573C411.649 16.6111 414.965 16.9181 454.107 21.217C497.891 26.1299 586.788 35.9558 696.912 35.4952C814.335 35.0347 1027.29 10.0093 1114.86 11.2375C1124.14 11.3911 1158.65 12.4657 1184.52 14.3081C1209.73 16.1505 1246.87 20.1422 1297.3 21.524C1318.52 22.1381 1352.36 23.2129 1391.5 22.9058C1401.45 22.7523 1433.3 22.2917 1471.11 20.4493C1508.93 18.607 1544.09 15.6898 1575.92 14.7687C1644.26 13.0799 1687.38 15.5363 1687.38 15.5363V-1.04492H-193.378V13.8475ZM-42.7848 16.304C-38.1403 14.7687 -29.5171 15.6898 -14.2579 15.6898C1.00029 15.6898 26.2097 13.8475 24.2193 14.001C22.2288 14.1546 3.6532 16.304 -15.5849 16.9181C-35.4874 17.6857 -46.7646 17.8393 -42.7848 16.304ZM79.2815 12.1587C79.2815 12.1587 95.2032 11.8516 116.433 10.7769C137.661 9.54867 184.764 6.47806 216.607 5.40334C271.006 3.71452 321.425 5.40334 316.781 5.55688C311.474 5.71041 253.095 4.63569 200.022 7.24571C178.13 8.32043 138.325 10.6234 117.76 11.3911C95.8667 12.3122 79.2815 12.1587 79.2815 12.1587ZM458.75 12.0051C447.472 10.9305 546.983 19.2211 581.48 21.3704C595.412 22.2917 622.611 23.827 647.82 24.4411C673.693 25.0553 706.864 25.0553 706.2 25.2088C706.2 25.5158 667.723 26.437 631.899 25.2088C596.076 23.9805 597.402 23.5199 581.48 22.7523C556.27 21.524 470.028 13.0799 458.75 12.0051ZM366.537 9.54867C365.21 9.54867 371.844 8.93455 398.38 11.2375C424.916 13.5404 442.828 16.6111 444.156 16.9181C445.482 17.0717 420.937 14.1546 400.37 12.3122C380.468 10.4698 367.2 9.54867 366.537 9.54867ZM-190.061 8.1669C-189.398 8.32043 -177.456 9.85573 -158.218 12.0051C-138.979 14.1546 -112.442 16.304 -113.769 16.1505C-115.096 16.1505 -136.988 15.2293 -162.861 12.3122C-188.734 9.39513 -190.724 8.01336 -190.061 8.1669ZM1479.73 16.7646C1479.06 16.4575 1492.33 16.4575 1509.58 14.9222C1526.83 13.387 1545.41 12.4657 1561.34 11.8516C1587.87 10.6234 1638.95 12.0051 1636.29 12.1587C1634.31 12.3122 1581.9 11.6981 1553.37 13.2334C1538.78 14.001 1537.45 14.001 1515.56 15.6898C1493.66 17.3788 1480.39 17.2252 1479.73 16.7646ZM1203.09 13.0799C1200.44 12.9264 1179.88 10.6234 1147.36 9.08808C1114.86 7.39924 1088.33 8.32043 1088.33 7.85983C1088.33 7.39924 1094.96 6.47806 1129.45 7.39924C1163.95 8.32043 1205.75 13.2334 1203.09 13.0799ZM1212.38 9.2416C1211.06 9.39513 1189.82 7.24571 1174.57 6.63159C1159.3 6.171 1161.96 5.86394 1161.96 5.71041C1161.96 5.55688 1169.26 5.40334 1179.88 6.01747C1191.15 6.78512 1213.71 9.08808 1212.38 9.2416ZM1066.43 5.71041C1065.77 6.01747 1043.21 6.93865 1029.28 8.47395C1015.35 10.0093 1017.34 9.39513 1016.68 9.2416C1016.01 9.08808 1021.98 8.01336 1032.59 7.24571C1043.21 6.32453 1067.09 5.40334 1066.43 5.71041ZM1253.51 15.9969C1254.18 16.4575 1251.52 16.7646 1240.91 15.6898C1230.29 14.6152 1223.66 13.6939 1226.31 13.8475C1228.96 14.001 1232.28 14.4616 1242.89 15.0758C1254.18 15.6898 1252.85 15.5363 1253.51 15.9969ZM1458.5 17.9928C1459.83 17.9928 1444.57 19.2211 1436.61 19.3745C1428.65 19.5281 1423.34 19.5281 1423.34 19.0676C1423.34 18.607 1424.01 18.2999 1433.96 18.4534C1444.57 18.607 1457.17 17.9928 1458.5 17.9928ZM677.674 31.3499C678.338 31.5035 693.596 30.8894 727.43 30.8894C760.6 30.8894 817.653 27.2047 841.535 25.5158C865.415 23.8269 775.195 31.5034 732.073 31.8105C688.952 32.1176 677.011 31.1965 677.674 31.3499Z" fill="#F2F2F2"/>
+                <path d="M-101.165 26.5906C-100.501 26.4372 -70.6481 27.0512 -53.3995 26.5906C-4.97105 25.5159 59.3801 21.6777 56.7261 22.1383C54.0722 22.5988 -34.1604 26.8977 -56.0524 27.2048C-88.5602 27.8189 -101.828 26.5906 -101.165 26.5906Z" fill="#F2F2F2"/>
+                <path d="M178.792 14.0007C180.119 13.8472 208.646 12.4653 241.816 12.1582C274.987 11.8513 326.069 13.0795 323.415 12.9259C321.425 12.7724 284.275 10.1624 235.183 11.0836C186.091 12.0048 177.466 14.1541 178.792 14.0007Z" fill="#F2F2F2"/>
+                <path d="M330.713 19.5282C331.376 19.3746 317.445 17.9928 309.484 17.8393C301.523 17.6857 296.215 17.8393 296.215 18.2999C296.215 18.7605 296.879 19.0676 306.83 18.914C318.108 18.7605 330.049 19.6816 330.713 19.5282Z" fill="#F2F2F2"/>
+                <path d="M353.932 15.2291C353.932 15.0755 383.122 17.0714 395.727 18.6067C408.331 19.9884 436.858 23.3661 436.195 23.3661C435.531 23.5196 408.331 20.9097 394.4 19.3743C380.468 17.839 353.932 15.3825 353.932 15.2291Z" fill="#F2F2F2"/>
+                <path d="M662.416 39.9476C663.079 39.7941 692.933 40.4082 710.181 39.9476C758.61 38.8728 822.96 35.0346 820.307 35.4952C817.653 35.9558 729.42 40.2547 707.527 40.5618C675.02 41.1758 661.753 40.1011 662.416 39.9476Z" fill="#F2F2F2"/>
+                <path d="M1409.41 28.5861C1409.41 28.5861 1401.45 28.1256 1390.18 28.4327C1378.89 28.7397 1351.69 29.8144 1335.77 29.5074C1307.91 28.8932 1286.68 25.362 1289.34 25.5156C1291.99 25.5156 1317.86 28.8932 1346.39 28.4327C1358.33 28.2792 1380.22 27.665 1390.84 27.8185C1401.45 27.9721 1409.41 28.5861 1409.41 28.5861Z" fill="#F2F2F2"/>
+                <path d="M1186.51 18.3001C1185.19 18.4536 1173.24 17.0718 1157.98 16.6112C1142.72 16.3042 1144.05 16.1506 1144.05 15.8436C1144.05 15.69 1155.99 15.2294 1166.61 15.8436C1177.22 16.6112 1187.83 18.1465 1186.51 18.3001Z" fill="#F2F2F2"/>
+                </g>
+                </g>
+                <defs>
+                <clipPath id="clip0_7_745">
+                <rect width="1880.76" height="655.13" fill="white" transform="translate(-193.378)"/>
+                </clipPath>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 md:px-12">
+            <!-- Top Bar: Contact & Social -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
+                <div class="text-xl md:text-2xl font-bold text-center md:text-left">
+                    <span class="text-primary">Speak to our expert at</span> 
+                    <span class="text-yellow-500 ml-2">+1-564-653-9991</span>
+                </div>
+                <div class="flex items-center gap-4 text-primary text-2xl">
+                    <span class="font-bold text-lg mr-2">Follow Us</span>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Main Footer Links -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Column 1: Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact</h4>
+                    <address class="not-italic text-sm text-gray-600 space-y-4 leading-relaxed">
+                        <p>28 Omar Afandy, Qena,<br>Egypt.</p>
+                        <p><a href="mailto:info@egyptjoy.com" class="underline decoration-1 underline-offset-4 hover:text-primary transition">info@egyptjoy.com</a></p>
+                    </address>
+                </div>
+                <!-- Column 2: Company -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Company</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Tourz Reviews</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Travel Guides</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Data Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Legal</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Support</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-primary transition">Get In Touch</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Help center</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Live chat</a></li>
+                        <li><a href="#" class="hover:text-primary transition">How it works</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Newsletter -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Newsletter</h4>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Subscribe to the free newsletter and stay up to date
+                    </p>
+                    <form class="relative">
+                        <input type="email" placeholder="Your email address" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-primary transition">
+                        <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-500 hover:text-primary px-2 py-1">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar: Copyright & Payment -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200/50">
+                <div class="text-xs text-gray-500 font-medium mb-4 md:mb-0">
+                    &copy; Copyright TERA-X 2025
+                </div>
+                <div class="flex items-center gap-4 text-2xl">
+                    <!-- Simple CSS/Icon representations for payment methods -->
+                    <i class="fa-brands fa-cc-visa text-blue-900"></i>
+                    <i class="fa-brands fa-cc-mastercard text-red-600"></i>
+                    <i class="fa-brands fa-cc-paypal text-blue-600"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+       <script src="js/script.js"></script>
+</body>
+</html>

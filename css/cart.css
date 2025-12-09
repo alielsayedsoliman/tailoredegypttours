@@ -1,0 +1,158 @@
+/* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #111;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Navbar */
+.navbar {
+  padding: 20px 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-content nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  background: #555;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.btn.primary {
+  background: #007bff;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0;
+}
+
+.hero-content {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+/* Features */
+.features {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  padding: 30px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.feature-card img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+/* About */
+.about {
+  padding: 80px 0;
+}
+
+.about-content {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-content img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* CTA */
+.cta {
+  padding: 80px 0;
+  text-align: center;
+  background: #007bff;
+  color: #fff;
+}
+
+.cta-box h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+  padding: 30px 0;
+  text-align: center;
+  background: #fafafa;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content,
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-content nav {
+    display: none;
+  }
+}

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Tailored Egypt Tours</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003940',
+                        'primary-dark': '#002a30',
+                        secondary: '#D4A373',
+                        accent: '#E9C46A',
+                        'primary-light': '#E6F0F1',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+<link rel="stylesheet" href="css/search.css">
+
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-primary text-white py-6 px-4 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-12 h-12 relative">
+                <img src="https://cdn-icons-png.flaticon.com/512/262/262590.png" class="invert opacity-90 w-full h-full object-contain" alt="Logo Icon">
+            </div>
+            <div class="leading-tight">
+                <h1 class="font-serif text-xl tracking-widest font-bold">TAILORED</h1>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-gray-300">Egypt Tours</p>
+            </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition"><i class="fa-solid fa-globe"></i> Language</a>
+            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition"><i class="fa-regular fa-heart"></i> Favorite</a>
+            <a href="#" class="hover:text-emerald-200 transition">Sign up</a>
+            <button class="bg-white text-primary px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition">Log in</button>
+        </div>
+        
+        <button class="md:hidden text-2xl text-white"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 md:px-12 py-8">
+        
+        <!-- Breadcrumbs & Header -->
+        <div class="mb-8">
+            <div class="text-xs text-gray-500 mb-2">
+                <a href="index.html" class="hover:text-primary">Home</a> &gt; 
+                <a href="#" class="hover:text-primary">Tours</a> &gt; 
+                <span id="breadcrumb-current" class="text-primary font-medium">Search</span>
+            </div>
+            <div class="flex justify-between items-end">
+                <h1 id="page-title" class="text-3xl md:text-4xl font-bold text-primary">Explore all things to do</h1>
+                <span id="result-count" class="text-xs text-gray-400 hidden md:block">Showing results</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Sidebar (Filters) -->
+            <aside class="w-full lg:w-1/4 space-y-6">
+                
+                <!-- Date Picker Box -->
+                <div class="bg-primary text-white p-5 rounded-xl shadow-lg relative">
+                    <h3 class="font-semibold mb-3 text-sm">When are you traveling?</h3>
+                    <div class="relative bg-white rounded-lg overflow-hidden flex items-center px-3 py-2 cursor-pointer" id="date-picker-trigger">
+                        <i class="fa-regular fa-calendar text-gray-400 mr-3"></i>
+                        <input type="text" id="date-display" value="Select Dates" class="bg-transparent text-primary text-sm font-bold w-full outline-none cursor-pointer pointer-events-none" readonly>
+                    </div>
+
+                    <!-- Pop-up Widget -->
+                    <div id="date-picker-widget" class="hidden absolute top-full left-0 mt-2 z-50 bg-white text-gray-800 rounded-xl shadow-2xl border border-gray-100 w-[600px] max-w-[90vw] p-4">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            
+                            <!-- Part 1: Start Date -->
+                            <div class="flex-1">
+                                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 border-b pb-1">Start Date</div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <button class="text-gray-400 hover:text-primary"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <span class="font-bold text-primary text-sm">February 2025</span>
+                                    <button class="text-gray-400 hover:text-primary"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-400 mb-1">
+                                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                                </div>
+                                <div class="grid grid-cols-7 gap-1 text-center date-grid" data-month="February">
+                                    <!-- Spacer for empty days -->
+                                    <span></span><span></span><span></span>
+                                    <!-- Days -->
+                                    <div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div>
+                                    <div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div>
+                                    <div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div>
+                                    <div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div>
+                                    <div class="calendar-day">22</div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div>
+                                </div>
+                            </div>
+
+                            <!-- Part 2: End Date -->
+                            <div class="flex-1 border-l border-gray-100 pl-0 md:pl-6">
+                                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 border-b pb-1">End Date</div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <button class="text-gray-400 hover:text-primary"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <span class="font-bold text-primary text-sm">March 2025</span>
+                                    <button class="text-gray-400 hover:text-primary"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-400 mb-1">
+                                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                                </div>
+                                <div class="grid grid-cols-7 gap-1 text-center date-grid" data-month="March">
+                                    <!-- Spacer -->
+                                    <span></span><span></span><span></span>
+                                    <!-- Days -->
+                                    <div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div>
+                                    <div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div>
+                                    <div class="calendar-day">14</div>
+                                    <div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div>
+                                    <div class="calendar-day">22</div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div><div class="calendar-day">31</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex justify-end gap-2">
+                            <button id="cancel-date-btn" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-primary transition">Cancel</button>
+                            <button id="apply-date-btn" class="px-6 py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-md hover:bg-primary-dark transition">Apply Dates</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Groups -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                    
+                    <!-- Tour Type (Default Open) -->
+                    <div class="mb-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle active" onclick="toggleFilter(this)">
+                            Tour Type
+                            <i class="fa-solid fa-chevron-down transform rotate-180"></i>
+                        </button>
+                        <div class="filter-content open mt-4">
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">Nature Tours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer" checked>
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">Adventure Tours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">Cultural Tours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">Food Tours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">City Tours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 group-hover:text-primary transition">Cruises Tours</span>
+                                </label>
+                            </div>
+                            <a href="#" class="text-yellow-600 text-xs font-bold mt-3 block hover:underline">See More</a>
+                        </div>
+                    </div>
+
+                    <!-- Filter Price -->
+                    <div class="border-t border-gray-100 py-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle active" onclick="toggleFilter(this)">
+                            Filter Price
+                            <i class="fa-solid fa-chevron-down transform rotate-180"></i>
+                        </button>
+                        <div class="filter-content open mt-4">
+                            <div class="px-2">
+                                <div class="text-center mb-2 font-bold text-primary text-sm">
+                                    Up to $<span id="price-display">500</span>
+                                </div>
+                                <input type="range" min="40" max="1000" value="500" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary" oninput="filterByPrice(this.value)">
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-medium">
+                                    <span>$40</span>
+                                    <span>$1000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="border-t border-gray-100 py-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle" onclick="toggleFilter(this)">
+                            Duration
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="filter-content mt-4">
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">Up to 1 Hour</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">1 to 4 Hours</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">4 Hours to 1 Day</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="border-t border-gray-100 py-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle" onclick="toggleFilter(this)">
+                            Language
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="filter-content mt-4">
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">English</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">French</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">German</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="border-t border-gray-100 py-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle" onclick="toggleFilter(this)">
+                            Rating
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="filter-content mt-4">
+                            <div class="space-y-2">
+                                <!-- 5 Stars -->
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="rating" class="text-primary focus:ring-0">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </label>
+                                <!-- 4 Stars & Up -->
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="rating" class="text-primary focus:ring-0">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">& Up</span>
+                                </label>
+                                <!-- 3 Stars & Up -->
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="rating" class="text-primary focus:ring-0">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">& Up</span>
+                                </label>
+                                <!-- 2 Stars & Up -->
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="rating" class="text-primary focus:ring-0">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">& Up</span>
+                                </label>
+                                <!-- 1 Star & Up -->
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="rating" class="text-primary focus:ring-0">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">& Up</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specials -->
+                    <div class="border-t border-gray-100 pt-4">
+                        <button class="flex justify-between items-center w-full text-primary font-bold text-sm filter-toggle" onclick="toggleFilter(this)">
+                            Specials
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="filter-content mt-4">
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">Deals & Discounts</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <div class="relative w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center transition group-hover:border-primary">
+                                        <input type="checkbox" class="peer appearance-none absolute inset-0 w-full h-full cursor-pointer">
+                                        <i class="fa-solid fa-check text-primary text-xs opacity-0 peer-checked:opacity-100"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">Free Cancellation</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- Right Content (Search Results) -->
+            <main class="w-full lg:w-3/4">
+                <!-- Sorting Bar -->
+                <div class="flex justify-between items-center mb-6 relative z-40">
+                    <span class="text-sm text-gray-500 font-medium">1362 results</span>
+                    <div class="text-sm relative">
+                        <span class="text-gray-500 mr-1">Sort by:</span>
+                        <button onclick="toggleSortDropdown()" class="font-bold text-primary outline-none cursor-pointer inline-flex items-center gap-1">
+                            <span id="sort-label">Featured</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="sort-icon"></i>
+                        </button>
+                        
+                        <!-- Custom Dropdown Widget -->
+                        <div id="sort-dropdown" class="hidden absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                            <ul class="py-1">
+                                <li><button onclick="selectSort('Featured')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-primary font-medium transition">Featured</button></li>
+                                <li><button onclick="selectSort('Price: Low to High')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-primary font-medium transition">Price: Low to High</button></li>
+                                <li><button onclick="selectSort('Price: High to Low')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-primary font-medium transition">Price: High to Low</button></li>
+                                <li><button onclick="selectSort('Top Rated')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-primary font-medium transition">Top Rated</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results List -->
+                <div class="space-y-6">
+                    <!-- Result Card 1 -->
+                    <a href="details.html" class="tour-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition duration-300 block no-underline group" data-price="80">
+                        <div class="w-full md:w-1/3 h-56 md:h-auto relative">
+                            <img src="https://images.unsplash.com/photo-1544333323-ec13d3d752f9?q=80&w=2000&auto=format&fit=crop" alt="Valley of Kings" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <!-- Object tag allows nested interactivity within anchor -->
+                            <object class="absolute top-3 right-3 z-10">
+                                <button class="bg-white p-1.5 rounded-full w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 transition shadow-sm cursor-pointer">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </object>
+                        </div>
+                        <div class="flex-1 p-5 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs mb-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Luxor, Egypt</span>
+                                </div>
+                                <h2 class="text-primary text-xl font-bold mb-2 group-hover:text-teal-600 transition">Valley of the kings & Hateshpsut temple Half day tour</h2>
+                                <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">
+                                    Perfect for those wanting to explore Luxor with little time, tick off bucket list destinations and learn about one of the world's oldest civilisations.
+                                </p>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                    <span class="text-primary font-bold text-sm">4.8</span>
+                                    <span class="text-gray-400 text-xs">(243)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-50/50 p-5 flex flex-col justify-center items-center md:items-end border-l border-gray-100 gap-2">
+                            <div class="flex items-center gap-1 text-primary font-bold text-sm mb-1">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>2 Days</span>
+                            </div>
+                            <div class="text-4xl font-bold text-primary mb-3">80$</div>
+                            
+                            <!-- Object tag to isolate button clicks from card click -->
+                            <object class="w-full space-y-2">
+                                <button class="bg-primary hover:bg-primary-dark text-white w-full py-2 rounded-lg text-sm font-bold transition shadow-lg cursor-pointer">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white w-full py-2 rounded-lg text-sm font-bold transition cursor-pointer">
+                                    View Details
+                                </button>
+                            </object>
+                        </div>
+                    </a>
+
+                    <!-- Result Card 2 -->
+                    <a href="details.html" class="tour-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition duration-300 block no-underline group" data-price="45">
+                        <div class="w-full md:w-1/3 h-56 md:h-auto relative">
+                            <img src="https://images.unsplash.com/photo-1539650116455-8efdb4f8d548?q=80&w=2000&auto=format&fit=crop" alt="Pyramids" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <object class="absolute top-3 right-3 z-10">
+                                <button class="bg-white p-1.5 rounded-full w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 transition shadow-sm cursor-pointer">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </object>
+                        </div>
+                        <div class="flex-1 p-5 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs mb-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Giza, Egypt</span>
+                                </div>
+                                <h2 class="text-primary text-xl font-bold mb-2 group-hover:text-teal-600 transition">Great Pyramids of Giza & Sphinx Private Tour</h2>
+                                <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">
+                                    Experience the wonder of the ancient world with a private guide. Skip the lines and dive deep into the history of the Pharaohs.
+                                </p>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="text-primary font-bold text-sm">5.0</span>
+                                    <span class="text-gray-400 text-xs">(500)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-50/50 p-5 flex flex-col justify-center items-center md:items-end border-l border-gray-100 gap-2">
+                            <div class="flex items-center gap-1 text-primary font-bold text-sm mb-1">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>5 Hours</span>
+                            </div>
+                            <div class="text-4xl font-bold text-primary mb-3">45$</div>
+                            <object class="w-full space-y-2">
+                                <button class="bg-primary hover:bg-primary-dark text-white w-full py-2 rounded-lg text-sm font-bold transition shadow-lg cursor-pointer">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white w-full py-2 rounded-lg text-sm font-bold transition cursor-pointer">
+                                    View Details
+                                </button>
+                            </object>
+                        </div>
+                    </a>
+
+                    <!-- Result Card 3 -->
+                    <a href="details.html" class="tour-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition duration-300 block no-underline group" data-price="350">
+                        <div class="w-full md:w-1/3 h-56 md:h-auto relative">
+                            <img src="https://images.unsplash.com/photo-1544211110-3844f24d777e?q=80&w=2000&auto=format&fit=crop" alt="Nile Cruise" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <object class="absolute top-3 right-3 z-10">
+                                <button class="bg-white p-1.5 rounded-full w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 transition shadow-sm cursor-pointer">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </object>
+                        </div>
+                        <div class="flex-1 p-5 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs mb-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Aswan, Egypt</span>
+                                </div>
+                                <h2 class="text-primary text-xl font-bold mb-2 group-hover:text-teal-600 transition">Luxury Nile Cruise: Aswan to Luxor 4 Days</h2>
+                                <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">
+                                    Sail the majestic Nile river on a 5-star cruise ship. Visit the temples of Kom Ombo and Edfu while enjoying premium amenities.
+                                </p>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                    <span class="text-primary font-bold text-sm">4.7</span>
+                                    <span class="text-gray-400 text-xs">(120)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-50/50 p-5 flex flex-col justify-center items-center md:items-end border-l border-gray-100 gap-2">
+                            <div class="flex items-center gap-1 text-primary font-bold text-sm mb-1">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>4 Days</span>
+                            </div>
+                            <div class="text-4xl font-bold text-primary mb-3">350$</div>
+                            <object class="w-full space-y-2">
+                                <button class="bg-primary hover:bg-primary-dark text-white w-full py-2 rounded-lg text-sm font-bold transition shadow-lg cursor-pointer">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white w-full py-2 rounded-lg text-sm font-bold transition cursor-pointer">
+                                    View Details
+                                </button>
+                            </object>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center items-center gap-2 mt-10">
+                    <button class="w-8 h-8 rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">1</button>
+                    <button class="w-8 h-8 rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center text-sm font-bold">2</button>
+                    <button class="w-8 h-8 rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center text-sm font-bold">3</button>
+                    <span class="text-gray-400">...</span>
+                    <button class="w-8 h-8 rounded-full border border-gray-300 text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="relative bg-[#FDFBF6] pt-24 pb-10 mt-12 text-primary overflow-hidden">
+        <!-- Footer Background Map (Replaces Wave Divider) -->
+        <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+            <svg class="w-full h-full object-cover opacity-50" viewBox="0 0 1440 656" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_745)">
+                <path opacity="0.05" d="M1674.84 0H-180.84C-187.764 0 -193.378 5.61362 -193.378 12.5384V642.592C-193.378 649.516 -187.764 655.13 -180.84 655.13H1674.84C1681.76 655.13 1687.38 649.516 1687.38 642.592V12.5384C1687.38 5.61362 1681.76 0 1674.84 0Z" fill="#D9A441"/>
+                <mask id="mask0_7_745" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-194" y="0" width="1882" height="656">
+                <path d="M1674.84 0H-180.84C-187.764 0 -193.378 5.61362 -193.378 12.5384V642.592C-193.378 649.516 -187.764 655.13 -180.84 655.13H1674.84C1681.76 655.13 1687.38 649.516 1687.38 642.592V12.5384C1687.38 5.61362 1681.76 0 1674.84 0Z" fill="#F5F5F5"/>
+                </mask>
+                <g mask="url(#mask0_7_745)">
+                <path d="M-193.378 13.8475C-193.378 13.8475 -144.949 20.4493 -100.501 20.9099C-55.39 21.3705 -16.9118 20.9099 38.1505 18.607C113.115 15.5363 257.738 3.10039 334.693 9.85573C411.649 16.6111 414.965 16.9181 454.107 21.217C497.891 26.1299 586.788 35.9558 696.912 35.4952C814.335 35.0347 1027.29 10.0093 1114.86 11.2375C1124.14 11.3911 1158.65 12.4657 1184.52 14.3081C1209.73 16.1505 1246.87 20.1422 1297.3 21.524C1318.52 22.1381 1352.36 23.2129 1391.5 22.9058C1401.45 22.7523 1433.3 22.2917 1471.11 20.4493C1508.93 18.607 1544.09 15.6898 1575.92 14.7687C1644.26 13.0799 1687.38 15.5363 1687.38 15.5363V-1.04492H-193.378V13.8475ZM-42.7848 16.304C-38.1403 14.7687 -29.5171 15.6898 -14.2579 15.6898C1.00029 15.6898 26.2097 13.8475 24.2193 14.001C22.2288 14.1546 3.6532 16.304 -15.5849 16.9181C-35.4874 17.6857 -46.7646 17.8393 -42.7848 16.304ZM79.2815 12.1587C79.2815 12.1587 95.2032 11.8516 116.433 10.7769C137.661 9.54867 184.764 6.47806 216.607 5.40334C271.006 3.71452 321.425 5.40334 316.781 5.55688C311.474 5.71041 253.095 4.63569 200.022 7.24571C178.13 8.32043 138.325 10.6234 117.76 11.3911C95.8667 12.3122 79.2815 12.1587 79.2815 12.1587ZM458.75 12.0051C447.472 10.9305 546.983 19.2211 581.48 21.3704C595.412 22.2917 622.611 23.827 647.82 24.4411C673.693 25.0553 706.864 25.0553 706.2 25.2088C706.2 25.5158 667.723 26.437 631.899 25.2088C596.076 23.9805 597.402 23.5199 581.48 22.7523C556.27 21.524 470.028 13.0799 458.75 12.0051ZM366.537 9.54867C365.21 9.54867 371.844 8.93455 398.38 11.2375C424.916 13.5404 442.828 16.6111 444.156 16.9181C445.482 17.0717 420.937 14.1546 400.37 12.3122C380.468 10.4698 367.2 9.54867 366.537 9.54867ZM-190.061 8.1669C-189.398 8.32043 -177.456 9.85573 -158.218 12.0051C-138.979 14.1546 -112.442 16.304 -113.769 16.1505C-115.096 16.1505 -136.988 15.2293 -162.861 12.3122C-188.734 9.39513 -190.724 8.01336 -190.061 8.1669ZM1479.73 16.7646C1479.06 16.4575 1492.33 16.4575 1509.58 14.9222C1526.83 13.387 1545.41 12.4657 1561.34 11.8516C1587.87 10.6234 1638.95 12.0051 1636.29 12.1587C1634.31 12.3122 1581.9 11.6981 1553.37 13.2334C1538.78 14.001 1537.45 14.001 1515.56 15.6898C1493.66 17.3788 1480.39 17.2252 1479.73 16.7646ZM1203.09 13.0799C1200.44 12.9264 1179.88 10.6234 1147.36 9.08808C1114.86 7.39924 1088.33 8.32043 1088.33 7.85983C1088.33 7.39924 1094.96 6.47806 1129.45 7.39924C1163.95 8.32043 1205.75 13.2334 1203.09 13.0799ZM1212.38 9.2416C1211.06 9.39513 1189.82 7.24571 1174.57 6.63159C1159.3 6.171 1161.96 5.86394 1161.96 5.71041C1161.96 5.55688 1169.26 5.40334 1179.88 6.01747C1191.15 6.78512 1213.71 9.08808 1212.38 9.2416ZM1066.43 5.71041C1065.77 6.01747 1043.21 6.93865 1029.28 8.47395C1015.35 10.0093 1017.34 9.39513 1016.68 9.2416C1016.01 9.08808 1021.98 8.01336 1032.59 7.24571C1043.21 6.32453 1067.09 5.40334 1066.43 5.71041ZM1253.51 15.9969C1254.18 16.4575 1251.52 16.7646 1240.91 15.6898C1230.29 14.6152 1223.66 13.6939 1226.31 13.8475C1228.96 14.001 1232.28 14.4616 1242.89 15.0758C1254.18 15.6898 1252.85 15.5363 1253.51 15.9969ZM1458.5 17.9928C1459.83 17.9928 1444.57 19.2211 1436.61 19.3745C1428.65 19.5281 1423.34 19.5281 1423.34 19.0676C1423.34 18.607 1424.01 18.2999 1433.96 18.4534C1444.57 18.607 1457.17 17.9928 1458.5 17.9928ZM677.674 31.3499C678.338 31.5035 693.596 30.8894 727.43 30.8894C760.6 30.8894 817.653 27.2047 841.535 25.5158C865.415 23.8269 775.195 31.5034 732.073 31.8105C688.952 32.1176 677.011 31.1965 677.674 31.3499Z" fill="#F2F2F2"/>
+                <path d="M-101.165 26.5906C-100.501 26.4372 -70.6481 27.0512 -53.3995 26.5906C-4.97105 25.5159 59.3801 21.6777 56.7261 22.1383C54.0722 22.5988 -34.1604 26.8977 -56.0524 27.2048C-88.5602 27.8189 -101.828 26.5906 -101.165 26.5906Z" fill="#F2F2F2"/>
+                <path d="M178.792 14.0007C180.119 13.8472 208.646 12.4653 241.816 12.1582C274.987 11.8513 326.069 13.0795 323.415 12.9259C321.425 12.7724 284.275 10.1624 235.183 11.0836C186.091 12.0048 177.466 14.1541 178.792 14.0007Z" fill="#F2F2F2"/>
+                <path d="M330.713 19.5282C331.376 19.3746 317.445 17.9928 309.484 17.8393C301.523 17.6857 296.215 17.8393 296.215 18.2999C296.215 18.7605 296.879 19.0676 306.83 18.914C318.108 18.7605 330.049 19.6816 330.713 19.5282Z" fill="#F2F2F2"/>
+                <path d="M353.932 15.2291C353.932 15.0755 383.122 17.0714 395.727 18.6067C408.331 19.9884 436.858 23.3661 436.195 23.3661C435.531 23.5196 408.331 20.9097 394.4 19.3743C380.468 17.839 353.932 15.3825 353.932 15.2291Z" fill="#F2F2F2"/>
+                <path d="M662.416 39.9476C663.079 39.7941 692.933 40.4082 710.181 39.9476C758.61 38.8728 822.96 35.0346 820.307 35.4952C817.653 35.9558 729.42 40.2547 707.527 40.5618C675.02 41.1758 661.753 40.1011 662.416 39.9476Z" fill="#F2F2F2"/>
+                <path d="M1409.41 28.5861C1409.41 28.5861 1401.45 28.1256 1390.18 28.4327C1378.89 28.7397 1351.69 29.8144 1335.77 29.5074C1307.91 28.8932 1286.68 25.362 1289.34 25.5156C1291.99 25.5156 1317.86 28.8932 1346.39 28.4327C1358.33 28.2792 1380.22 27.665 1390.84 27.8185C1401.45 27.9721 1409.41 28.5861 1409.41 28.5861Z" fill="#F2F2F2"/>
+                <path d="M1186.51 18.3001C1185.19 18.4536 1173.24 17.0718 1157.98 16.6112C1142.72 16.3042 1144.05 16.1506 1144.05 15.8436C1144.05 15.69 1155.99 15.2294 1166.61 15.8436C1177.22 16.6112 1187.83 18.1465 1186.51 18.3001Z" fill="#F2F2F2"/>
+                </g>
+                </g>
+                <defs>
+                <clipPath id="clip0_7_745">
+                <rect width="1880.76" height="655.13" fill="white" transform="translate(-193.378)"/>
+                </clipPath>
+                </defs>
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 md:px-12 relative z-10">
+            <!-- Top Bar: Contact & Social -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
+                <div class="text-xl md:text-2xl font-bold text-center md:text-left">
+                    <span class="text-primary">Speak to our expert at</span> 
+                    <span class="text-yellow-500 ml-2">+1-564-653-9991</span>
+                </div>
+                <div class="flex items-center gap-4 text-primary text-2xl">
+                    <span class="font-bold text-lg mr-2">Follow Us</span>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-yellow-500 transition"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Main Footer Links -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Column 1: Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact</h4>
+                    <address class="not-italic text-sm text-gray-600 space-y-4 leading-relaxed">
+                        <p>28 Omar Afandy, Qena,<br>Egypt.</p>
+                        <p><a href="mailto:info@egyptjoy.com" class="underline decoration-1 underline-offset-4 hover:text-primary transition">info@egyptjoy.com</a></p>
+                    </address>
+                </div>
+                <!-- Column 2: Company -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Company</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Tourz Reviews</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Travel Guides</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Data Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Legal</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Support</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-primary transition">Get In Touch</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Help center</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Live chat</a></li>
+                        <li><a href="#" class="hover:text-primary transition">How it works</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Newsletter -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Newsletter</h4>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Subscribe to the free newsletter and stay up to date
+                    </p>
+                    <form class="relative">
+                        <input type="email" placeholder="Your email address" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-primary transition">
+                        <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-500 hover:text-primary px-2 py-1">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar: Copyright & Payment -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200/50">
+                <div class="text-xs text-gray-500 font-medium mb-4 md:mb-0">
+                    &copy; Copyright TERA-X 2025
+                </div>
+                <div class="flex items-center gap-4 text-2xl">
+                    <i class="fa-brands fa-cc-visa text-blue-900"></i>
+                    <i class="fa-brands fa-cc-mastercard text-red-600"></i>
+                    <i class="fa-brands fa-cc-paypal text-blue-600"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/search.js"></script>
+
+</body>
+</html>

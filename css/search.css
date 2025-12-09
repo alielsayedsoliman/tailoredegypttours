@@ -1,0 +1,77 @@
+    /* Custom Checkbox Styling */
+        .custom-checkbox:checked {
+            background-color: #003940;
+            border-color: #003940;
+        }
+        .custom-checkbox:checked + div {
+            display: block;
+        }
+        
+        /* Accordion Styles */
+        .filter-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .filter-content.open {
+            max-height: 500px; /* Arbitrary large height */
+            opacity: 1;
+        }
+
+        .filter-toggle .fa-chevron-down {
+            transition: transform 0.3s ease;
+        }
+
+        .filter-toggle.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Calendar Styles */
+        .calendar-day {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            color: #374151;
+        }
+        .calendar-day:hover {
+            background-color: #f3f4f6;
+        }
+        .calendar-day.selected {
+            background-color: #003940 !important;
+            color: white !important;
+        }
+        .calendar-day.in-range {
+            background-color: #ecfdf5;
+            color: #003940;
+        }
+
+        /* Range Slider Thumb Styling */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #003940;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #003940;
+        }
+        
+        input[type=range]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #003940;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #003940;
+        }
