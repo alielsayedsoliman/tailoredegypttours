@@ -57,6 +57,39 @@
             }
         }
 
+
+        // --- MOBILE MENU LOGIC ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    // Open animation
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('scale-y-0', 'opacity-0');
+                    }, 10);
+                } else {
+                    // Close animation state reset (handled by CSS primarily but ensuring class toggle is instant)
+                    mobileMenu.classList.add('scale-y-0', 'opacity-0');
+                }
+            });
+        }
+
+        function toggleMobileLang() {
+            const dropdown = document.getElementById('mobile-lang-dropdown');
+            const icon = document.getElementById('mobile-lang-icon');
+            dropdown.classList.toggle('hidden');
+            if(icon) {
+                if(dropdown.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        }
+
         // --- LANGUAGE DROPDOWN LOGIC ---
         function toggleLanguage() {
             const dropdown = document.getElementById('lang-dropdown');

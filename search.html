@@ -102,7 +102,7 @@
                 <i class="fa-solid fa-cart-shopping group-hover:scale-110 transition-transform duration-300"></i>
                 <span>Cart</span>
             </a>
-            <a href="#" class="hover:text-accent transition-colors duration-300 relative group">
+            <a href="signup.html" class="hover:text-accent transition-colors duration-300 relative group">
                 Sign up
                 <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full duration-300"></span>
             </a>
@@ -111,9 +111,34 @@
             </button>
         </div>
         
-        <button class="md:hidden text-2xl text-white hover:text-accent transition-colors duration-300">
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white hover:text-accent transition-colors duration-300">
             <i class="fa-solid fa-bars"></i>
         </button>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-primary text-white shadow-lg border-t border-white/10 z-40 origin-top transform transition-all duration-300 ease-in-out scale-y-0 opacity-0">
+            <div class="flex flex-col p-4 space-y-4 font-medium">
+                <button onclick="toggleMobileLang()" class="text-left flex justify-between items-center hover:text-accent">
+                    <span><i class="fa-solid fa-globe mr-2"></i> Language</span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300" id="mobile-lang-icon"></i>
+                </button>
+                <div id="mobile-lang-dropdown" class="hidden pl-6 space-y-2 text-sm text-gray-300 bg-primary-dark/30 rounded-lg p-2">
+                    <a href="#" class="block hover:text-white flex items-center gap-2"><img src="https://flagcdn.com/w20/us.png" class="w-4"> English</a>
+                    <a href="#" class="block hover:text-white flex items-center gap-2"><img src="https://flagcdn.com/w20/de.png" class="w-4"> Deutsch</a>
+                    <a href="#" class="block hover:text-white flex items-center gap-2"><img src="https://flagcdn.com/w20/fr.png" class="w-4"> Français</a>
+                    <a href="#" class="block hover:text-white flex items-center gap-2"><img src="https://flagcdn.com/w20/es.png" class="w-4"> Español</a>
+                    <a href="#" class="block hover:text-white flex items-center gap-2"><img src="https://flagcdn.com/w20/it.png" class="w-4"> Italiano</a>
+                </div>
+                
+                <a href="favourit.html" class="block hover:text-accent"><i class="fa-regular fa-heart mr-2"></i> Favorite</a>
+                <a href="cart.html" class="block hover:text-accent"><i class="fa-solid fa-cart-shopping mr-2"></i> Cart</a>
+                <a href="signup.html" class="block hover:text-accent">Sign up</a>
+                <a href="signin.html" class="block hover:text-accent">Log in</a>
+            </div>
+        </div>
+
     </nav>
 
     <!-- Main Content -->
