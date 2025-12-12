@@ -1,4 +1,4 @@
-    function toggleFaq(button) {
+        function toggleFaq(button) {
             const content = button.nextElementSibling;
             const indicator = button.querySelector('div');
             
@@ -34,16 +34,60 @@
                         updateStars(stars, value);
                     });
 
-                    // Hover Event (Preview Rating - optional for polish)
+                    // Hover Event (Preview Rating)
                     star.addEventListener('mouseenter', () => {
-                        // Optional: can add temporary highlight here
+                        const value = parseInt(star.getAttribute('data-value'));
+                        updateStars(stars, value);
                     });
                     
+                    // Reset on mouse leave to the saved value
                     group.addEventListener('mouseleave', () => {
-                        // Reset to saved value on mouse leave
-                        updateStars(stars, input.value);
+                        updateStars(stars, input.value || 0);
                     });
                 });
+            });
+            
+            // Check Wishlist Status
+            const mainWishlistBtn = document.getElementById('wishlist-btn');
+            if (mainWishlistBtn) {
+                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                const title = mainWishlistBtn.getAttribute('data-title');
+                if (favorites.some(f => f.title === title)) {
+                    // Visual state for already favorited
+                    mainWishlistBtn.classList.add('bg-gray-100'); 
+                    const iconRegular = mainWishlistBtn.querySelector('.fa-regular');
+                    const iconSolid = mainWishlistBtn.querySelector('.fa-solid');
+                    if (iconRegular) {
+                        iconRegular.classList.add('hidden');
+                        iconRegular.classList.remove('group-hover/btn:hidden'); // remove default hover behavior
+                    }
+                    if (iconSolid) {
+                        iconSolid.classList.remove('hidden');
+                        iconSolid.classList.remove('group-hover/btn:block'); // remove default hover behavior
+                        iconSolid.classList.add('block');
+                    }
+                }
+            }
+            
+            // Check card favorites status for "You might also like"
+             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const buttons = document.querySelectorAll('.favorite-btn');
+            
+            buttons.forEach(btn => {
+                const title = btn.getAttribute('data-title');
+                if (favorites.some(f => f.title === title)) {
+                    const heartRegular = btn.querySelector('.fa-regular');
+                    const heartSolid = btn.querySelector('.fa-solid');
+                    if(heartRegular) {
+                        heartRegular.classList.add('hidden');
+                        heartRegular.classList.remove('group-hover/heart:hidden');
+                    }
+                    if(heartSolid) {
+                        heartSolid.classList.remove('hidden');
+                        heartSolid.classList.remove('group-hover/heart:block');
+                        heartSolid.classList.add('block');
+                    }
+                }
             });
         });
 
@@ -114,6 +158,15 @@
                     !timeWidget.contains(event.target) && 
                     !timeTrigger.contains(event.target)) {
                     timeWidget.classList.add('hidden');
+                }
+            }
+            
+            // Close dropdowns
+            const dropdown = document.getElementById('lang-dropdown');
+            const btn = document.getElementById('lang-btn');
+            if (dropdown && btn) {
+                if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                    dropdown.classList.add('hidden');
                 }
             }
         });
@@ -307,3 +360,125 @@
                 
             }, 800); 
         }
+
+        // --- LANGUAGE DROPDOWN LOGIC ---
+        function toggleLanguage() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function selectLang(element) {
+            // Update button text or handle language change
+            // Close dropdown
+            document.getElementById('lang-dropdown').classList.add('hidden');
+        }
+        
+        // --- FAVORITES LOGIC FOR DETAILS PAGE ---
+        function toggleMainFavorite(btn) {
+            // Prevent duplicate clicks if needed or just simple logic
+            const tripData = {
+                title: btn.getAttribute('data-title'),
+                location: btn.getAttribute('data-location'),
+                image: btn.getAttribute('data-image'),
+                price: btn.getAttribute('data-price'),
+                rating: btn.getAttribute('data-rating'),
+                reviews: btn.getAttribute('data-reviews')
+            };
+
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const index = favorites.findIndex(item => item.title === tripData.title);
+            
+            const heartRegular = btn.querySelector('.fa-regular');
+            const heartSolid = btn.querySelector('.fa-solid');
+
+            if (index === -1) {
+                // Add
+                favorites.push(tripData);
+                // Visual update
+                if(heartRegular) {
+                    heartRegular.classList.add('hidden');
+                    heartRegular.classList.remove('group-hover/btn:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.remove('hidden');
+                    heartSolid.classList.remove('group-hover/btn:block');
+                    heartSolid.classList.add('block');
+                }
+                // Optional: visual feedback like changing button bg
+                btn.classList.add('bg-gray-100'); 
+            } else {
+                // Remove
+                favorites.splice(index, 1);
+                // Visual update
+                if(heartRegular) {
+                    heartRegular.classList.remove('hidden');
+                    heartRegular.classList.add('group-hover/btn:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.add('hidden');
+                    heartSolid.classList.add('group-hover/btn:block');
+                    heartSolid.classList.remove('block');
+                }
+                 btn.classList.remove('bg-gray-100');
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Generic toggle for cards (if needed in "You might also like")
+        function toggleFavorite(event, element) {
+            event.preventDefault();
+            event.stopPropagation();
+            // Simplified copy of logic from index.html
+             const tripData = {
+                title: element.getAttribute('data-title'),
+                location: element.getAttribute('data-location'),
+                image: element.getAttribute('data-image'),
+                price: element.getAttribute('data-price'),
+                rating: element.getAttribute('data-rating'),
+                reviews: element.getAttribute('data-reviews')
+            };
+
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const index = favorites.findIndex(item => item.title === tripData.title);
+            
+            const heartRegular = element.querySelector('.fa-regular');
+            const heartSolid = element.querySelector('.fa-solid');
+            
+             if (index === -1) {
+                favorites.push(tripData);
+                if(heartRegular) {
+                    heartRegular.classList.add('hidden');
+                    heartRegular.classList.remove('group-hover/heart:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.remove('hidden');
+                    heartSolid.classList.remove('group-hover/heart:block');
+                    heartSolid.classList.add('block');
+                }
+            } else {
+                favorites.splice(index, 1);
+                if(heartRegular) {
+                    heartRegular.classList.remove('hidden');
+                    heartRegular.classList.add('group-hover/heart:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.add('hidden');
+                    heartSolid.classList.add('group-hover/heart:block');
+                    heartSolid.classList.remove('block');
+                }
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('lang-dropdown');
+            const btn = document.getElementById('lang-btn');
+            
+            // Safety check if elements exist on this page
+            if (dropdown && btn) {
+                if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });

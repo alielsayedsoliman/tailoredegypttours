@@ -6,6 +6,11 @@
         .custom-checkbox:checked + div {
             display: block;
         }
+
+        .opacity-100 {
+            transform: scale(1.5);
+        }
+
         
         /* Accordion Styles */
         .filter-content {

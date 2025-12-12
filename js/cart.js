@@ -56,3 +56,28 @@
                 document.getElementById('final-total').innerText = "$" + finalTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
             }
         }
+
+        // --- LANGUAGE DROPDOWN LOGIC ---
+        function toggleLanguage() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function selectLang(element) {
+            // Update button text or handle language change
+            // Close dropdown
+            document.getElementById('lang-dropdown').classList.add('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('lang-dropdown');
+            const btn = document.getElementById('lang-btn');
+            
+            // Check if elements exist to avoid errors on pages where they might be missing
+            if (dropdown && btn) {
+                if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });

@@ -31,6 +31,67 @@
                 }
             }
         });
+        
+        function toggleLanguage() {
+        const dropdown = document.getElementById('lang-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function selectLang(element) {
+        // Update button text or handle language change
+        // Close dropdown
+        document.getElementById('lang-dropdown').classList.add('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('lang-dropdown');
+        const btn = document.getElementById('lang-btn');
+        
+        if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+
+        function toggleLanguage() {
+        const dropdown = document.getElementById('lang-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function selectLang(element) {
+        // Update button text or handle language change
+        // Close dropdown
+        document.getElementById('lang-dropdown').classList.add('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('lang-dropdown');
+        const btn = document.getElementById('lang-btn');
+        
+        if (dropdown && btn) {
+            if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        }
+    });
+
+    function updateResultCount() {
+        const cards = document.querySelectorAll('.tour-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+            if (card.offsetParent !== null) { // Checks if element is visible
+                visibleCount++;
+            }
+        });
+        const countSpan = document.getElementById('visible-count');
+        if(countSpan) countSpan.innerText = `${visibleCount} results`;
+    }
+
+    // Run initially
+    document.addEventListener('DOMContentLoaded', () => {
+        updateResultCount();
+    });
 
         // Price Filtering Logic
         function filterByPrice(maxPrice) {
@@ -215,3 +276,284 @@
             }
         }
         // --- CALENDAR LOGIC END ---
+
+            function toggleLanguage() {
+        const dropdown = document.getElementById('lang-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function selectLang(element) {
+        // Update button text or handle language change
+        // Close dropdown
+        document.getElementById('lang-dropdown').classList.add('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('lang-dropdown');
+        const btn = document.getElementById('lang-btn');
+        
+        if (dropdown && btn) {
+            if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        }
+    });
+
+    function updateResultCount() {
+        const cards = document.querySelectorAll('.tour-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+            if (card.offsetParent !== null) { // Checks if element is visible
+                visibleCount++;
+            }
+        });
+        const countSpan = document.getElementById('visible-count');
+        if(countSpan) countSpan.innerText = `${visibleCount} results`;
+    }
+    
+    // --- FAVORITES LOGIC ---
+    function toggleFavorite(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const tripData = {
+            title: element.getAttribute('data-title'),
+            location: element.getAttribute('data-location'),
+            image: element.getAttribute('data-image'),
+            price: element.getAttribute('data-price'),
+            rating: element.getAttribute('data-rating'),
+            reviews: element.getAttribute('data-reviews'),
+            duration: element.getAttribute('data-duration')
+        };
+
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.findIndex(item => item.title === tripData.title);
+
+        const heartRegular = element.querySelector('.fa-regular');
+        const heartSolid = element.querySelector('.fa-solid');
+
+        if (index === -1) {
+            // Add to favorites
+            favorites.push(tripData);
+            // Visual update to solid red
+            if(heartRegular) {
+                heartRegular.classList.add('hidden');
+                heartRegular.classList.remove('group-hover/heart:hidden'); // Override hover
+            }
+            if(heartSolid) {
+                heartSolid.classList.remove('hidden');
+                heartSolid.classList.remove('group-hover/heart:block'); // Override hover
+                heartSolid.classList.add('block');
+            }
+        } else {
+            // Remove from favorites
+            favorites.splice(index, 1);
+            // Visual update back to outline
+            if(heartRegular) {
+                heartRegular.classList.remove('hidden');
+                heartRegular.classList.add('group-hover/heart:hidden');
+            }
+            if(heartSolid) {
+                heartSolid.classList.add('hidden');
+                heartSolid.classList.add('group-hover/heart:block');
+                heartSolid.classList.remove('block');
+            }
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    // Initialize Favorites State
+    document.addEventListener('DOMContentLoaded', () => {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const buttons = document.querySelectorAll('.favorite-btn');
+        
+        buttons.forEach(btn => {
+            const title = btn.getAttribute('data-title');
+            if (favorites.some(f => f.title === title)) {
+                const heartRegular = btn.querySelector('.fa-regular');
+                const heartSolid = btn.querySelector('.fa-solid');
+                if(heartRegular) {
+                    heartRegular.classList.add('hidden');
+                    heartRegular.classList.remove('group-hover/heart:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.remove('hidden');
+                    heartSolid.classList.remove('group-hover/heart:block');
+                    heartSolid.classList.add('block');
+                }
+            }
+        });
+        
+        updateResultCount();
+    });
+
+        function toggleLanguage() {
+        const dropdown = document.getElementById('lang-dropdown');
+        if (dropdown) {
+            dropdown.classList.toggle('hidden');
+        }
+    }
+
+    function selectLang(element) {
+        // Update button text or handle language change
+        // Close dropdown
+        const dropdown = document.getElementById('lang-dropdown');
+        if (dropdown) {
+            dropdown.classList.add('hidden');
+        }
+    }
+
+    // Toggle Filter Accordion
+    function toggleFilter(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('i');
+        
+        button.classList.toggle('active');
+        content.classList.toggle('open');
+        
+        if (button.classList.contains('active')) {
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Update Result Count
+    function updateResultCount() {
+        const cards = document.querySelectorAll('.tour-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+            if (card.style.display !== 'none') {
+                visibleCount++;
+            }
+        });
+        const countSpan = document.getElementById('visible-count');
+        const resultCountSpan = document.getElementById('result-count');
+        const text = `${visibleCount} results`;
+        
+        if (countSpan) countSpan.innerText = text;
+        if (resultCountSpan) resultCountSpan.innerText = `Showing ${visibleCount} results`;
+    }
+
+    // Filter by Price
+    function filterByPrice(maxPrice) {
+        const display = document.getElementById('price-display');
+        if(display) display.innerText = maxPrice;
+
+        const cards = document.querySelectorAll('.tour-card');
+        cards.forEach(card => {
+            const price = parseInt(card.getAttribute('data-price'));
+            if (price <= maxPrice) {
+                card.style.display = 'flex'; // Or 'block' depending on layout, flex for these cards
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        updateResultCount();
+    }
+
+    // Toggle Sort Dropdown
+    function toggleSortDropdown() {
+        const dropdown = document.getElementById('sort-dropdown');
+        const icon = document.getElementById('sort-icon');
+        if (dropdown) {
+            dropdown.classList.toggle('hidden');
+            if (!dropdown.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    }
+
+    function selectSort(sortName) {
+        const label = document.getElementById('sort-label');
+        if(label) label.innerText = sortName;
+        toggleSortDropdown();
+        // Add sorting logic here if needed
+    }
+
+    // Favorites Logic
+    function toggleFavorite(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const tripData = {
+            title: element.getAttribute('data-title'),
+            location: element.getAttribute('data-location'),
+            image: element.getAttribute('data-image'),
+            price: element.getAttribute('data-price'),
+            rating: element.getAttribute('data-rating'),
+            reviews: element.getAttribute('data-reviews'),
+            duration: element.getAttribute('data-duration')
+        };
+
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.findIndex(item => item.title === tripData.title);
+
+        const heartRegular = element.querySelector('.fa-regular');
+        const heartSolid = element.querySelector('.fa-solid');
+
+        if (index === -1) {
+            // Add to favorites
+            favorites.push(tripData);
+            // Visual update to solid red
+            if(heartRegular) {
+                heartRegular.classList.add('hidden');
+                heartRegular.classList.remove('group-hover/heart:hidden'); 
+            }
+            if(heartSolid) {
+                heartSolid.classList.remove('hidden');
+                heartSolid.classList.remove('group-hover/heart:block');
+                heartSolid.classList.add('block');
+            }
+        } else {
+            // Remove from favorites
+            favorites.splice(index, 1);
+            // Visual update back to outline
+            if(heartRegular) {
+                heartRegular.classList.remove('hidden');
+                heartRegular.classList.add('group-hover/heart:hidden');
+            }
+            if(heartSolid) {
+                heartSolid.classList.add('hidden');
+                heartSolid.classList.add('group-hover/heart:block');
+                heartSolid.classList.remove('block');
+            }
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    // Initialize state
+    document.addEventListener('DOMContentLoaded', () => {
+        updateResultCount();
+        
+        // Initialize favorites state
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const favButtons = document.querySelectorAll('.favorite-btn'); // You need to add this class to your heart buttons in HTML
+        
+        // Note: For the search page, you'll need to update the HTML of the tour cards to include the `favorite-btn` class 
+        // and the `data-` attributes (title, location, price, etc.) similar to index.html for this to work fully.
+        // I will rely on the `onclick="toggleFavorite(...)"` being present in the HTML for interaction.
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(event) {
+        const langDropdown = document.getElementById('lang-dropdown');
+        const langBtn = document.getElementById('lang-btn');
+        
+        if (langDropdown && langBtn && !langDropdown.contains(event.target) && !langBtn.contains(event.target)) {
+            langDropdown.classList.add('hidden');
+        }
+
+        const sortDropdown = document.getElementById('sort-dropdown');
+        const sortBtn = document.querySelector('button[onclick="toggleSortDropdown()"]'); // Target the sort button
+         if (sortDropdown && sortBtn && !sortDropdown.contains(event.target) && !sortBtn.contains(event.target)) {
+            sortDropdown.classList.add('hidden');
+            const icon = document.getElementById('sort-icon');
+            if(icon) icon.style.transform = 'rotate(0deg)';
+        }
+    });

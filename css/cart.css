@@ -24,6 +24,10 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+.opacity-100 {
+  transform: scale(1.5);
+}
+
 .nav-content {
   display: flex;
   justify-content: space-between;

@@ -1,4 +1,4 @@
-      /* Custom Styles */
+        /* Custom Styles */
         .gallery-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -8,6 +8,10 @@
         
         .gallery-main {
             grid-row: 1 / span 2;
+        }
+
+        .opacity-100 {
+            transform: scale(1.5);
         }
 
         @media (max-width: 768px) {

@@ -15,6 +15,11 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    
+    <!-- Bar Icon -->
+    <link rel="icon" href="/assets/egyptjoy.png" type="image/icon type"/>
+    
     
     <!-- Configuration -->
     <script>
@@ -24,6 +29,9 @@
                     colors: {
                         primary: '#003940',
                         'primary-dark': '#002a30',
+                        secondary: '#D4A373',
+                        accent: '#E9C46A',
+                        'primary-light': '#E6F0F1',
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
@@ -40,25 +48,73 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- Navbar -->
-    <nav class="bg-primary text-white py-6 px-4 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-lg">
-        <a href="index.html" class="flex items-center gap-3">
-            <div class="w-12 h-12 relative">
-                <img src="https://cdn-icons-png.flaticon.com/512/262/262590.png" class="invert opacity-90 w-full h-full object-contain" alt="Logo Icon">
+    <nav class="bg-primary text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-lg font-sans">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 relative transition-transform group-hover:scale-110 duration-300">
+                <img src="/assets/egyptjoy.png" class="opacity-100 w-full h-full object-contain" alt="Logo Icon">
             </div>
             <div class="leading-tight">
-                <h1 class="font-serif text-xl tracking-widest font-bold">TAILORED</h1>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-gray-300">Egypt Tours</p>
+                <h1 class="font-serif text-xl tracking-widest font-bold relative">
+                    TAILORED
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full duration-500"></span>
+                </h1>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-gray-300 group-hover:text-accent transition-colors duration-300">Egypt Tours</p>
             </div>
         </a>
 
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition"><i class="fa-solid fa-globe"></i> Language</a>
-            <a href="#" class="flex items-center gap-2 hover:text-emerald-200 transition"><i class="fa-regular fa-heart"></i> Favorite</a>
-            <a href="#" class="hover:text-emerald-200 transition">Sign up</a>
-            <button class="bg-white text-primary px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition">Log in</button>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+            
+            <!-- Language Dropdown -->
+            <div class="relative">
+                <button id="lang-btn" onclick="toggleLanguage()" class="flex items-center gap-2 hover:text-accent transition-colors duration-300 group focus:outline-none">
+                    <i class="fa-solid fa-globe group-hover:rotate-180 transition-transform duration-500"></i> 
+                    <span>Language</span>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="lang-dropdown" class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-4 w-40 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden transform origin-top transition-all duration-200 z-50">
+                    <a href="#" onclick="selectLang(this)" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 hover:text-primary transition text-sm border-b border-gray-100 font-bold text-primary bg-emerald-50">
+                        <img src="https://flagcdn.com/w20/us.png" class="w-5 h-auto shadow-sm rounded-sm" alt="English">
+                        English
+                    </a>
+                    <a href="#" onclick="selectLang(this)" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 hover:text-primary transition text-sm border-b border-gray-100">
+                        <img src="https://flagcdn.com/w20/de.png" class="w-5 h-auto shadow-sm rounded-sm" alt="Deutsch">
+                        Deutsch
+                    </a>
+                    <a href="#" onclick="selectLang(this)" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 hover:text-primary transition text-sm border-b border-gray-100">
+                        <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-auto shadow-sm rounded-sm" alt="Français">
+                        Français
+                    </a>
+                    <a href="#" onclick="selectLang(this)" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 hover:text-primary transition text-sm border-b border-gray-100">
+                        <img src="https://flagcdn.com/w20/es.png" class="w-5 h-auto shadow-sm rounded-sm" alt="Español">
+                        Español
+                    </a>
+                    <a href="#" onclick="selectLang(this)" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 hover:text-primary transition text-sm">
+                        <img src="https://flagcdn.com/w20/it.png" class="w-5 h-auto shadow-sm rounded-sm" alt="Italiano">
+                        Italiano
+                    </a>
+                </div>
+            </div>
+
+            <a href="favourit.html" class="flex items-center gap-2 hover:text-accent transition-colors duration-300 group">
+                <i class="fa-regular fa-heart group-hover:scale-110 transition-transform duration-300"></i>
+                <span>Favorite</span>
+            </a>
+            <a href="cart.html" class="flex items-center gap-2 hover:text-accent transition-colors duration-300 group">
+                <i class="fa-solid fa-cart-shopping group-hover:scale-110 transition-transform duration-300"></i>
+                <span>Cart</span>
+            </a>
+            <a href="#" class="hover:text-accent transition-colors duration-300 relative group">
+                Sign up
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full duration-300"></span>
+            </a>
+            <button onclick="window.location.href='signin.html'" class="bg-white text-primary px-6 py-2 rounded-full font-bold hover:bg-accent hover:text-primary transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                Log in
+            </button>
         </div>
         
-        <button class="md:hidden text-2xl text-white"><i class="fa-solid fa-bars"></i></button>
+        <button class="md:hidden text-2xl text-white hover:text-accent transition-colors duration-300">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
     <!-- Main Content Container -->
@@ -101,8 +157,22 @@
                 <button class="flex items-center gap-2 text-primary font-bold hover:bg-gray-100 px-4 py-2 rounded-full transition">
                     <i class="fa-solid fa-share-nodes"></i> Share
                 </button>
-                <button class="flex items-center gap-2 text-primary font-bold hover:bg-gray-100 px-4 py-2 rounded-full transition">
-                    <i class="fa-regular fa-heart"></i> Wishlist
+                
+                <!-- Wishlist Button with Add Functionality -->
+                <button 
+                    id="wishlist-btn"
+                    onclick="toggleMainFavorite(this)"
+                    class="flex items-center gap-2 text-primary font-bold hover:bg-gray-100 px-4 py-2 rounded-full transition group/btn"
+                    data-title="Phi Phi Islands Adventure Day Trip with Seaview Lunch by V. Marine Tour"
+                    data-location="Phuket, Thailand"
+                    data-image="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2039&auto=format&fit=crop"
+                    data-price="$1,200"
+                    data-rating="4.8"
+                    data-reviews="(269)"
+                >
+                    <i class="fa-regular fa-heart group-hover/btn:hidden"></i>
+                    <i class="fa-solid fa-heart text-red-600 hidden group-hover/btn:block"></i>
+                    Wishlist
                 </button>
             </div>
         </div>
@@ -456,10 +526,24 @@
              <div class="overflow-x-auto hide-scrollbar pb-8">
                 <div class="flex gap-6 min-w-full">
                      <!-- Card 1 -->
-                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group">
+                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group relative">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=2000&auto=format&fit=crop" alt="Tour" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition"><i class="fa-regular fa-heart"></i></div>
+                             <!-- Heart Icon -->
+                             <div 
+                                class="favorite-btn absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto cursor-pointer group/heart"
+                                onclick="toggleFavorite(event, this)"
+                                data-title="Valley of the kings & Hateshpsut temple Half day tour"
+                                data-location="Luxor, Egypt"
+                                data-image="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=2000&auto=format&fit=crop"
+                                data-price="$80.78"
+                                data-rating="4.8"
+                                data-reviews="(243)"
+                                data-duration="1 day"
+                            >
+                                <i class="fa-regular fa-heart group-hover/heart:hidden"></i>
+                                <i class="fa-solid fa-heart text-red-600 hidden group-hover/heart:block"></i>
+                            </div>
                         </div>
                         <div class="p-4">
                             <div class="flex items-center gap-1 text-gray-400 text-xs mb-2"><i class="fa-solid fa-location-dot"></i><span>Luxor, Egypt</span></div>
@@ -469,10 +553,24 @@
                         </div>
                     </a>
                     <!-- Card 2 -->
-                    <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group">
+                    <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group relative">
                         <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1544211110-3844f24d777e?q=80&w=2000&auto=format&fit=crop" alt="Tour" class="w-full h-full object-cover group-hover:scale-100 transition duration-500">
-                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition"><i class="fa-regular fa-heart"></i></div>
+                            <img src="https://images.unsplash.com/photo-1744733881352-b6b4789f93c5?q=80&w=1556&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tour" class="w-full h-full object-cover group-hover:scale-100 transition duration-500">
+                             <!-- Heart Icon -->
+                             <div 
+                                class="favorite-btn absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto cursor-pointer group/heart"
+                                onclick="toggleFavorite(event, this)"
+                                data-title="Luxury Nile Cruise: Aswan to Luxor 4 Days"
+                                data-location="Aswan, Egypt"
+                                data-image="https://images.unsplash.com/photo-1744733881352-b6b4789f93c5?q=80&w=1556&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                data-price="$350.00"
+                                data-rating="4.2"
+                                data-reviews="(120)"
+                                data-duration="4 days"
+                            >
+                                <i class="fa-regular fa-heart group-hover/heart:hidden"></i>
+                                <i class="fa-solid fa-heart text-red-600 hidden group-hover/heart:block"></i>
+                            </div>
                         </div>
                         <div class="p-4">
                             <div class="flex items-center gap-1 text-gray-400 text-xs mb-2"><i class="fa-solid fa-location-dot"></i><span>Luxor, Egypt</span></div>
@@ -482,10 +580,24 @@
                         </div>
                     </a>
                      <!-- Card 3 -->
-                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group">
+                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group relative">
                         <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1599940824399-b87987ced72a?q=80&w=2000&auto=format&fit=crop" alt="Tour" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition"><i class="fa-regular fa-heart"></i></div>
+                            <img src="https://plus.unsplash.com/premium_photo-1678131188332-693a503680ae?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tour" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                             <!-- Heart Icon -->
+                             <div 
+                                class="favorite-btn absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto cursor-pointer group/heart"
+                                onclick="toggleFavorite(event, this)"
+                                data-title="Great Pyramids of Giza & Sphinx Private Tour"
+                                data-location="Giza, Egypt"
+                                data-image="https://plus.unsplash.com/premium_photo-1678131188332-693a503680ae?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                data-price="$45.00"
+                                data-rating="5.0"
+                                data-reviews="(500)"
+                                data-duration="5 hours"
+                            >
+                                <i class="fa-regular fa-heart group-hover/heart:hidden"></i>
+                                <i class="fa-solid fa-heart text-red-600 hidden group-hover/heart:block"></i>
+                            </div>
                         </div>
                         <div class="p-4">
                             <div class="flex items-center gap-1 text-gray-400 text-xs mb-2"><i class="fa-solid fa-location-dot"></i><span>Giza, Egypt</span></div>
@@ -495,10 +607,23 @@
                         </div>
                     </a>
                      <!-- Card 4 -->
-                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group">
+                     <a href="#" class="w-72 flex-shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition duration-300 block group relative">
                         <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1545624765-68d71249b672?q=80&w=2000&auto=format&fit=crop" alt="Tour" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition"><i class="fa-regular fa-heart"></i></div>
+                            <img src="https://images.unsplash.com/photo-1574864745093-5566c5be5855?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tour" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div 
+                                class="favorite-btn absolute bottom-3 right-3 bg-white/80 p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white text-primary transition pointer-events-auto cursor-pointer group/heart"
+                                onclick="toggleFavorite(event, this)"
+                                data-title="Mount Sinai Sunrise Hike & St. Catherine"
+                                data-location="Sinai, Egypt"
+                                data-image="https://images.unsplash.com/photo-1574864745093-5566c5be5855?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                data-price="$120.00"
+                                data-rating="4.7"
+                                data-reviews="(89)"
+                                data-duration="1 day"
+                            >
+                                <i class="fa-regular fa-heart group-hover/heart:hidden"></i>
+                                <i class="fa-solid fa-heart text-red-600 hidden group-hover/heart:block"></i>
+                            </div>
                         </div>
                         <div class="p-4">
                             <div class="flex items-center gap-1 text-gray-400 text-xs mb-2"><i class="fa-solid fa-location-dot"></i><span>Sinai, Egypt</span></div>
@@ -521,8 +646,8 @@
 
     <!-- Footer Section -->
     <footer class="relative bg-[#FDFBF6] pt-24 pb-10 mt-12 text-primary overflow-hidden">
-         <!-- ... existing footer content ... -->
-         <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+        <!-- Footer Background Map (Replaces Wave Divider) -->
+        <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
             <svg class="w-full h-full object-cover opacity-50" viewBox="0 0 1440 656" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_7_745)">
                 <path opacity="0.05" d="M1674.84 0H-180.84C-187.764 0 -193.378 5.61362 -193.378 12.5384V642.592C-193.378 649.516 -187.764 655.13 -180.84 655.13H1674.84C1681.76 655.13 1687.38 649.516 1687.38 642.592V12.5384C1687.38 5.61362 1681.76 0 1674.84 0Z" fill="#D9A441"/>
@@ -531,11 +656,6 @@
                 </mask>
                 <g mask="url(#mask0_7_745)">
                 <path d="M-193.378 13.8475C-193.378 13.8475 -144.949 20.4493 -100.501 20.9099C-55.39 21.3705 -16.9118 20.9099 38.1505 18.607C113.115 15.5363 257.738 3.10039 334.693 9.85573C411.649 16.6111 414.965 16.9181 454.107 21.217C497.891 26.1299 586.788 35.9558 696.912 35.4952C814.335 35.0347 1027.29 10.0093 1114.86 11.2375C1124.14 11.3911 1158.65 12.4657 1184.52 14.3081C1209.73 16.1505 1246.87 20.1422 1297.3 21.524C1318.52 22.1381 1352.36 23.2129 1391.5 22.9058C1401.45 22.7523 1433.3 22.2917 1471.11 20.4493C1508.93 18.607 1544.09 15.6898 1575.92 14.7687C1644.26 13.0799 1687.38 15.5363 1687.38 15.5363V-1.04492H-193.378V13.8475ZM-42.7848 16.304C-38.1403 14.7687 -29.5171 15.6898 -14.2579 15.6898C1.00029 15.6898 26.2097 13.8475 24.2193 14.001C22.2288 14.1546 3.6532 16.304 -15.5849 16.9181C-35.4874 17.6857 -46.7646 17.8393 -42.7848 16.304ZM79.2815 12.1587C79.2815 12.1587 95.2032 11.8516 116.433 10.7769C137.661 9.54867 184.764 6.47806 216.607 5.40334C271.006 3.71452 321.425 5.40334 316.781 5.55688C311.474 5.71041 253.095 4.63569 200.022 7.24571C178.13 8.32043 138.325 10.6234 117.76 11.3911C95.8667 12.3122 79.2815 12.1587 79.2815 12.1587ZM458.75 12.0051C447.472 10.9305 546.983 19.2211 581.48 21.3704C595.412 22.2917 622.611 23.827 647.82 24.4411C673.693 25.0553 706.864 25.0553 706.2 25.2088C706.2 25.5158 667.723 26.437 631.899 25.2088C596.076 23.9805 597.402 23.5199 581.48 22.7523C556.27 21.524 470.028 13.0799 458.75 12.0051ZM366.537 9.54867C365.21 9.54867 371.844 8.93455 398.38 11.2375C424.916 13.5404 442.828 16.6111 444.156 16.9181C445.482 17.0717 420.937 14.1546 400.37 12.3122C380.468 10.4698 367.2 9.54867 366.537 9.54867ZM-190.061 8.1669C-189.398 8.32043 -177.456 9.85573 -158.218 12.0051C-138.979 14.1546 -112.442 16.304 -113.769 16.1505C-115.096 16.1505 -136.988 15.2293 -162.861 12.3122C-188.734 9.39513 -190.724 8.01336 -190.061 8.1669ZM1479.73 16.7646C1479.06 16.4575 1492.33 16.4575 1509.58 14.9222C1526.83 13.387 1545.41 12.4657 1561.34 11.8516C1587.87 10.6234 1638.95 12.0051 1636.29 12.1587C1634.31 12.3122 1581.9 11.6981 1553.37 13.2334C1538.78 14.001 1537.45 14.001 1515.56 15.6898C1493.66 17.3788 1480.39 17.2252 1479.73 16.7646ZM1203.09 13.0799C1200.44 12.9264 1179.88 10.6234 1147.36 9.08808C1114.86 7.39924 1088.33 8.32043 1088.33 7.85983C1088.33 7.39924 1094.96 6.47806 1129.45 7.39924C1163.95 8.32043 1205.75 13.2334 1203.09 13.0799ZM1212.38 9.2416C1211.06 9.39513 1189.82 7.24571 1174.57 6.63159C1159.3 6.171 1161.96 5.86394 1161.96 5.71041C1161.96 5.55688 1169.26 5.40334 1179.88 6.01747C1191.15 6.78512 1213.71 9.08808 1212.38 9.2416ZM1066.43 5.71041C1065.77 6.01747 1043.21 6.93865 1029.28 8.47395C1015.35 10.0093 1017.34 9.39513 1016.68 9.2416C1016.01 9.08808 1021.98 8.01336 1032.59 7.24571C1043.21 6.32453 1067.09 5.40334 1066.43 5.71041ZM1253.51 15.9969C1254.18 16.4575 1251.52 16.7646 1240.91 15.6898C1230.29 14.6152 1223.66 13.6939 1226.31 13.8475C1228.96 14.001 1232.28 14.4616 1242.89 15.0758C1254.18 15.6898 1252.85 15.5363 1253.51 15.9969ZM1458.5 17.9928C1459.83 17.9928 1444.57 19.2211 1436.61 19.3745C1428.65 19.5281 1423.34 19.5281 1423.34 19.0676C1423.34 18.607 1424.01 18.2999 1433.96 18.4534C1444.57 18.607 1457.17 17.9928 1458.5 17.9928ZM677.674 31.3499C678.338 31.5035 693.596 30.8894 727.43 30.8894C760.6 30.8894 817.653 27.2047 841.535 25.5158C865.415 23.8269 775.195 31.5034 732.073 31.8105C688.952 32.1176 677.011 31.1965 677.674 31.3499Z" fill="#F2F2F2"/>
-                <path d="M-101.165 26.5906C-100.501 26.4372 -70.6481 27.0512 -53.3995 26.5906C-4.97105 25.5159 59.3801 21.6777 56.7261 22.1383C54.0722 22.5988 -34.1604 26.8977 -56.0524 27.2048C-88.5602 27.8189 -101.828 26.5906 -101.165 26.5906Z" fill="#F2F2F2"/>
-                <path d="M178.792 14.0007C180.119 13.8472 208.646 12.4653 241.816 12.1582C274.987 11.8513 326.069 13.0795 323.415 12.9259C321.425 12.7724 284.275 10.1624 235.183 11.0836C186.091 12.0048 177.466 14.1541 178.792 14.0007Z" fill="#F2F2F2"/>
-                <path d="M330.713 19.5282C331.376 19.3746 317.445 17.9928 309.484 17.8393C301.523 17.6857 296.215 17.8393 296.215 18.2999C296.215 18.7605 296.879 19.0676 306.83 18.914C318.108 18.7605 330.049 19.6816 330.713 19.5282Z" fill="#F2F2F2"/>
-                <path d="M353.932 15.2291C353.932 15.0755 383.122 17.0714 395.727 18.6067C408.331 19.9884 436.858 23.3661 436.195 23.3661C435.531 23.5196 408.331 20.9097 394.4 19.3743C380.468 17.839 353.932 15.3825 353.932 15.2291Z" fill="#F2F2F2"/>
-                <path d="M662.416 39.9476C663.079 39.7941 692.933 40.4082 710.181 39.9476C758.61 38.8728 822.96 35.0346 820.307 35.4952C817.653 35.9558 729.42 40.2547 707.527 40.5618C675.02 41.1758 661.753 40.1011 662.416 39.9476Z" fill="#F2F2F2"/>
                 <path d="M1409.41 28.5861C1409.41 28.5861 1401.45 28.1256 1390.18 28.4327C1378.89 28.7397 1351.69 29.8144 1335.77 29.5074C1307.91 28.8932 1286.68 25.362 1289.34 25.5156C1291.99 25.5156 1317.86 28.8932 1346.39 28.4327C1358.33 28.2792 1380.22 27.665 1390.84 27.8185C1401.45 27.9721 1409.41 28.5861 1409.41 28.5861Z" fill="#F2F2F2"/>
                 <path d="M1186.51 18.3001C1185.19 18.4536 1173.24 17.0718 1157.98 16.6112C1142.72 16.3042 1144.05 16.1506 1144.05 15.8436C1144.05 15.69 1155.99 15.2294 1166.61 15.8436C1177.22 16.6112 1187.83 18.1465 1186.51 18.3001Z" fill="#F2F2F2"/>
                 </g>

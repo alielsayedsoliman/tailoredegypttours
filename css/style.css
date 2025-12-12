@@ -1,3 +1,7 @@
+        .opacity-100 {
+            transform: scale(1.5);
+        }
+          
   /* Custom Background Image handling */
         .hero-section {
             background-image: linear-gradient(to bottom, rgba(0, 57, 64, 0.4), rgba(0, 57, 64, 0.6)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop');
@@ -12,7 +16,7 @@
         /* The Wave Shape Divider for Hero */
         .custom-shape-divider-bottom {
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 100%;
             overflow: hidden;

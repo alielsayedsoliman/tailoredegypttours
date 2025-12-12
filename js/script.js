@@ -9,6 +9,71 @@
             }
         });
 
+
+        function toggleLanguage() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function selectLang(element) {
+            // Update button text or handle language change
+            const selectedText = element.innerText;
+            // Optionally update UI to show selected language
+            
+            // Close dropdown
+            document.getElementById('lang-dropdown').classList.add('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('lang-dropdown');
+            const btn = document.getElementById('lang-btn');
+            
+            if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+                // --- TOUR TYPE DROPDOWN LOGIC ---
+        function toggleTourTypeDropdown() {
+            const dropdown = document.getElementById('tour-type-dropdown');
+            const icon = document.getElementById('tour-type-icon');
+            dropdown.classList.toggle('hidden');
+            if (!dropdown.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function selectTourType(value) {
+            document.getElementById('selected-tour-type').innerText = value;
+            document.getElementById('tour-type-value').value = value;
+            toggleTourTypeDropdown();
+        }
+
+
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const langDropdown = document.getElementById('lang-dropdown');
+            const langBtn = document.getElementById('lang-btn');
+
+            const tourDropdown = document.getElementById('tour-type-dropdown');
+            const tourBtn = document.getElementById('tour-type-btn');
+            
+            if (langDropdown && langBtn && !langDropdown.contains(event.target) && !langBtn.contains(event.target)) {
+                langDropdown.classList.add('hidden');
+            }
+
+            if (tourDropdown && tourBtn && !tourDropdown.contains(event.target) && !tourBtn.contains(event.target)) {
+                tourDropdown.classList.add('hidden');
+                const icon = document.getElementById('tour-type-icon');
+                if(icon) icon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        
         // --- 2. Generic Horizontal Slider Logic (Top Deals & Popular Tours) ---
         function initHorizontalSlider(containerId, prevBtnId, nextBtnId, dotsContainerId) {
             const container = document.getElementById(containerId);
@@ -255,3 +320,80 @@
         document.getElementById('prev-review').addEventListener('click', prevReview);
 
         initReviews();
+
+                // --- FAVORITES LOGIC ---
+        function toggleFavorite(event, element) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const tripData = {
+                title: element.getAttribute('data-title'),
+                location: element.getAttribute('data-location'),
+                image: element.getAttribute('data-image'),
+                price: element.getAttribute('data-price'),
+                rating: element.getAttribute('data-rating'),
+                reviews: element.getAttribute('data-reviews'),
+                duration: element.getAttribute('data-duration')
+            };
+
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const index = favorites.findIndex(item => item.title === tripData.title);
+
+            const heartRegular = element.querySelector('.fa-regular');
+            const heartSolid = element.querySelector('.fa-solid');
+
+            if (index === -1) {
+                // Add to favorites
+                favorites.push(tripData);
+                // Visual update to solid red
+                if(heartRegular) {
+                    heartRegular.classList.add('hidden');
+                    heartRegular.classList.remove('group-hover/heart:hidden'); // Override hover
+                }
+                if(heartSolid) {
+                    heartSolid.classList.remove('hidden');
+                    heartSolid.classList.remove('group-hover/heart:block'); // Override hover
+                    heartSolid.classList.add('block');
+                }
+            } else {
+                // Remove from favorites
+                favorites.splice(index, 1);
+                // Visual update back to outline
+                if(heartRegular) {
+                    heartRegular.classList.remove('hidden');
+                    heartRegular.classList.add('group-hover/heart:hidden');
+                }
+                if(heartSolid) {
+                    heartSolid.classList.add('hidden');
+                    heartSolid.classList.add('group-hover/heart:block');
+                    heartSolid.classList.remove('block');
+                }
+            }
+
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Initialize Favorites State
+        document.addEventListener('DOMContentLoaded', () => {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const buttons = document.querySelectorAll('.favorite-btn');
+            
+            buttons.forEach(btn => {
+                const title = btn.getAttribute('data-title');
+                if (favorites.some(f => f.title === title)) {
+                    const heartRegular = btn.querySelector('.fa-regular');
+                    const heartSolid = btn.querySelector('.fa-solid');
+                    if(heartRegular) {
+                        heartRegular.classList.add('hidden');
+                        heartRegular.classList.remove('group-hover/heart:hidden');
+                    }
+                    if(heartSolid) {
+                        heartSolid.classList.remove('hidden');
+                        heartSolid.classList.remove('group-hover/heart:block');
+                        heartSolid.classList.add('block');
+                    }
+                }
+            });
+            
+            // updateResultCount(); // Removed to fix reference error
+        });
